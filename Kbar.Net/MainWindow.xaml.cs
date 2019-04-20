@@ -22,13 +22,34 @@ namespace Kbar.Net
     public partial class MainWindow : Window
     {
         private LowKeyListener _listener;
+		private readonly DispatcherTimer timer;
 
         private bool isTurn;
 
         public MainWindow()
         {
             InitializeComponent();
+			
+			// Code for input timer
+			timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1.5f) };
+			timer.Tick += HandleCommand;
+			
+			// Code for hook key
+            _listener = new LowKeyListener();
+            _listener.OnKeyPressed += _listener_OnKeyPressed;
+
+            _listener.HookKeyboard();
         }
+		
+		private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowInTaskbar = false;
+            Topmost = true;
+
+            Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
+            Visibility = Visibility.Hidden;
+        }
+		
 
         void _listener_OnKeyPressed(object sender, KeyPressedArgs e)
         {
@@ -53,27 +74,21 @@ namespace Kbar.Net
             }
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            ShowInTaskbar = false;
-            Topmost = true;
-
-            Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
-            Visibility = Visibility.Hidden;
-
-            // Code for hook key
-            _listener = new LowKeyListener();
-            _listener.OnKeyPressed += _listener_OnKeyPressed;
-
-            _listener.HookKeyboard();
-        }
 
         private void CommandBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Wait for 1.5 s to check whether user will not type anymore.
-
-            // Split by blank (0 is Command)
+            // Wait for 1.5s to check whether user will not type anymore.
+			timer.Stop();
+			timer.Start();
         }
+		
+		private void HandleCommand(object sender, EventArgs e)
+		{
+		    timer.Stop();
+			
+		    // Split by blank (0 is Command)
+			
+		}
 
         //private void Grid_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         //{
