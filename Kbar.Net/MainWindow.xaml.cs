@@ -87,6 +87,19 @@ namespace Kbar.Net
 		    timer.Stop();
 			
 		    // Split by blank (0 is Command)
+			string[] command = CommandBox.Text.Split(' ');
+			if (command.Length > 0)
+			{
+			    string module = command[0];
+				switch (module)
+				{
+				    case 'ntrans':
+					case 'ntranslation':
+					    Papago papago = new Papago();
+						
+						break;
+				}
+			}
 			
 		}
 
