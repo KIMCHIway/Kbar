@@ -54,10 +54,5 @@ namespace Kbar.Net
 
             return tText;
 		}
-
-        public void Connect_Site()
-        {
-
-        }
     }
 }

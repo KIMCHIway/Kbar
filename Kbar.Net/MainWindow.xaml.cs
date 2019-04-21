@@ -26,9 +26,10 @@ namespace Kbar.Net
     {
         private LowKeyListener _listener;
 
+        // To delete the sub window which is turn on
         private dynamic cur_SubWindow;
-        private dynamic cur_Module;
-        private bool isTurn;
+        // To seperate what to do when F8 is pressed
+        private bool isTurn; 
 
         public MainWindow()
         {
@@ -58,6 +59,10 @@ namespace Kbar.Net
             {
                 if (isTurn)
                 {
+                    CommandBox.Text = string.Empty;
+
+                    Close_SubWindow();
+
                     Visibility = Visibility.Hidden;
                     isTurn = false;
 
@@ -66,13 +71,22 @@ namespace Kbar.Net
                 {
                     Visibility = Visibility.Visible;
                     isTurn = true;
+
+                    // Focus on TextBox when it turns on
+                    CommandBox.Focusable = true;
+                    CommandBox.Focus();
                 }
             }
 
             if (e.KeyPressed.ToString() == "Escape")
             {
+                CommandBox.Text = string.Empty;
+
+                Close_SubWindow();
+
                 Visibility = Visibility.Hidden;
                 isTurn = false;
+
             }
 
 
@@ -136,7 +150,7 @@ namespace Kbar.Net
                             string targetText = papago.Call_Papago(command[1], command[2], sourceText);
 
                             // Allocate state variable
-                            Allocate_State(subWindow, papago);
+                            cur_SubWindow = subWindow;
 
 
                             // Set window component
@@ -152,28 +166,24 @@ namespace Kbar.Net
             else if (command.Length == 0)
             {
                 // if Sub Windows is showed, intialize state variable
-                if (cur_SubWindow != null)
-                {
-                    cur_SubWindow.Close();
-                    cur_SubWindow = null;
-
-                    cur_Module = null;
-                }
+                Close_SubWindow();
             }
         }
 
+        private void Close_SubWindow()
+        {
+            if (cur_SubWindow != null)
+            {
+                cur_SubWindow.Close();
+                cur_SubWindow = null;
+            }
+        }
 
         private void Load_SubWindow(dynamic window)
         {
             window.Show();
             window.Left = Left;
             window.Top = Top + Height - 10;
-        }
-
-        private void Allocate_State(dynamic subWindow, dynamic module)
-        {
-            cur_SubWindow = subWindow;
-            cur_Module = module;
         }
 
         //private void Grid_Closing(object sender, System.ComponentModel.CancelEventArgs e)

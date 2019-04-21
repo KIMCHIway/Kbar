@@ -107,12 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SampleBar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="SampleIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="SampleBar.png" />
     <Resource Include="SampleForm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,16 @@
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Release\Kbar.Net.exe.config
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Release\Kbar.Net.exe
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Release\Kbar.Net.pdb
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\MainWindow.baml
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\MainWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\PapagoWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\App.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net_MarkupCompile.cache
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net_MarkupCompile.lref
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\PapagoWindow.baml
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.g.resources
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.Properties.Resources.resources
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csproj.GenerateResource.cache
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csproj.CoreCompileInputs.cache
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.exe
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.pdb
