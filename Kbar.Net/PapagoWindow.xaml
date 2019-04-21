@@ -1,0 +1,22 @@
+﻿<Window x:Class="Kbar.Net.PapagoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kbar.Net"
+        mc:Ignorable="d"
+        Title="PapagoWindow" Height="274" Width="611" WindowStyle="None" AllowsTransparency="True">
+    <Window.Background>
+        <ImageBrush ImageSource="SampleForm.png"/>
+    </Window.Background>
+    <Grid Loaded="Grid_Loaded">
+        <Label Content="Papago" HorizontalAlignment="Left" Margin="24,6,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="30" VerticalContentAlignment="Center"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="195" Margin="24,61,0,0" Stroke="Black" VerticalAlignment="Top" Width="265"/>
+        <Rectangle Fill="White" Height="195" Margin="322,61,24,0" Stroke="Black" VerticalAlignment="Top"/>
+        <Label x:Name="Label_sCode" Content="ko" HorizontalAlignment="Left" Margin="24,61,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black"/>
+        <Label x:Name="Label_tCode" Content="en" HorizontalAlignment="Left" Margin="322,61,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black"/>
+        <Label x:Name="Label_sText" Content="Label" HorizontalAlignment="Left" Margin="37,100,0,0" VerticalAlignment="Top" Height="141" Width="238"/>
+        <Label x:Name="Label_tText" Content="Label" HorizontalAlignment="Left" Margin="336,100,0,0" VerticalAlignment="Top" Height="141" Width="238"/>
+
+    </Grid>
+</Window>

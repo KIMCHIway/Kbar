@@ -70,9 +70,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PapagoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Papago.cs" />
+    <Compile Include="PapagoWindow.xaml.cs">
+      <DependentUpon>PapagoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="SampleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleForm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
