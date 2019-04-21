@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+// Hook of Key input from background
+// Show by F8 and Hide by ESC or F8
+
 namespace Kbar.Net
 {
     class LowKeyListener

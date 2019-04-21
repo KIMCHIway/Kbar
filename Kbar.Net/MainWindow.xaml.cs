@@ -14,11 +14,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// Kbar command docs : https://docs.google.com/document/d/1-0STF1GnlQi-IYj8PNtPBaO657w1jOwlGT1H6X81nZw/edit?usp=sharing
+// Code of GUI MainWindows.xaml 
+
 namespace Kbar.Net
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
+	
     public partial class MainWindow : Window
     {
         private LowKeyListener _listener;
@@ -93,9 +94,21 @@ namespace Kbar.Net
 			    string module = command[0];
 				switch (module)
 				{
-				    case 'ntrans':
-					case 'ntranslation':
-					    Papago papago = new Papago();
+				    case "papago":
+				    case "ntrans":
+					case "ntranslation":
+					case "trans":
+					case "translation":
+					    if (command.Length >= 4)
+						{
+						    Papago papago = new Papago();
+							
+							// Close sub form which is showed
+							
+							// Turn on new sub form
+							
+							// Write information
+						}
 						
 						break;
 				}
