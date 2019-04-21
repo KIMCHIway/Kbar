@@ -98,9 +98,19 @@ namespace Kbar.Net
             if (command.Length > 0)
             {
                 string module = command[0];
-                switch (module)
+                switch (module.ToLower())
                 {
-                    // papago module command
+                    // go module
+                    case "go":
+                        if (command.Length >= 2)
+                        {
+                            Go go = new Go();
+                            go.Call_Go(command[1]);
+                        }
+
+                        break;
+
+                    // papago module
                     case "papago":
                     case "nt":
                     case "ntranslation":
