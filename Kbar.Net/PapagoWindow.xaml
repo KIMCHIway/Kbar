@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kbar.Net"
         mc:Ignorable="d"
-        Title="PapagoWindow" Height="274" Width="611" WindowStyle="None" AllowsTransparency="True">
-    <Window.Background>
-        <ImageBrush ImageSource="SampleForm.png"/>
-    </Window.Background>
-    <Grid Loaded="Grid_Loaded">
-        <Label Content="Papago" HorizontalAlignment="Left" Margin="24,6,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="30" VerticalContentAlignment="Center"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="195" Margin="24,61,0,0" Stroke="Black" VerticalAlignment="Top" Width="265"/>
-        <Rectangle Fill="White" Height="195" Margin="322,61,24,0" Stroke="Black" VerticalAlignment="Top"/>
-        <Label x:Name="Label_sCode" Content="ko" HorizontalAlignment="Left" Margin="24,61,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black"/>
-        <Label x:Name="Label_tCode" Content="en" HorizontalAlignment="Left" Margin="322,61,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black"/>
-        <Label x:Name="Label_sText" Content="Label" HorizontalAlignment="Left" Margin="37,100,0,0" VerticalAlignment="Top" Height="141" Width="238"/>
-        <Label x:Name="Label_tText" Content="Label" HorizontalAlignment="Left" Margin="336,100,0,0" VerticalAlignment="Top" Height="141" Width="238"/>
+        Title="PapagoWindow" Height="379" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Grid Loaded="Grid_Loaded" Width="662" Height="379">
+        <Grid.Background>
+            <ImageBrush ImageSource="SubForm.png"/>
+        </Grid.Background>
+        <Label Content="Papago" HorizontalAlignment="Left" Margin="29,86,0,0" VerticalAlignment="Top" FontSize="25" VerticalContentAlignment="Center" FontFamily="Core Gothic D 8 Heavy"/>
+        <Rectangle HorizontalAlignment="Left" Height="195" Margin="50,134,0,0" Stroke="#FF40E040" VerticalAlignment="Top" Width="556" StrokeThickness="6"/>
+        <Label x:Name="Label_sCode" Content="ko" HorizontalAlignment="Left" Margin="56,134,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium"/>
+        <Label x:Name="Label_tCode" Content="en" HorizontalAlignment="Left" Margin="361,134,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium"/>
+        <Label x:Name="Label_sText" Content="Label" HorizontalAlignment="Left" Margin="56,188,0,0" VerticalAlignment="Top" Height="141" Width="238" FontWeight="Bold" FontSize="20" FontFamily="Core Gothic E 6 Bold"/>
+        <Label x:Name="Label_tText" Content="Label" HorizontalAlignment="Left" Margin="361,188,0,0" VerticalAlignment="Top" Height="141" Width="238" FontWeight="Bold" FontSize="20" FontFamily="Core Gothic D 6 Bold"/>
 
     </Grid>
 </Window>

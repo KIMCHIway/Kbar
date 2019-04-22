@@ -110,8 +110,10 @@
     <Resource Include="SampleIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SampleBar.png" />
-    <Resource Include="SampleForm.png" />
+    <Resource Include="BarForm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SubForm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

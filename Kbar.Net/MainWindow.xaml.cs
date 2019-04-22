@@ -69,6 +69,9 @@ namespace Kbar.Net
                 }
                 else
                 {
+                    PapagoWindow papagoWindow = new PapagoWindow();
+                    Load_SubWindow(papagoWindow);
+
                     Visibility = Visibility.Visible;
                     isTurn = true;
 
@@ -135,8 +138,8 @@ namespace Kbar.Net
                             if (cur_SubWindow != null) cur_SubWindow.Close();
 
                             // Turn on new sub form
-                            PapagoWindow subWindow = new PapagoWindow();
-                            Load_SubWindow(subWindow);
+                            PapagoWindow papagoWindow = new PapagoWindow();
+                            Load_SubWindow(papagoWindow);
 
                             // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
                             string sourceText = string.Empty;
@@ -150,14 +153,14 @@ namespace Kbar.Net
                             string targetText = papago.Call_Papago(command[1], command[2], sourceText);
 
                             // Allocate state variable
-                            cur_SubWindow = subWindow;
+                            cur_SubWindow = papagoWindow;
 
 
                             // Set window component
-                            subWindow.Label_sCode.Content = command[1];
-                            subWindow.Label_tCode.Content = command[2];
-                            subWindow.Label_sText.Content = sourceText;
-                            subWindow.Label_tText.Content = targetText;
+                            papagoWindow.Label_sCode.Content = command[1];
+                            papagoWindow.Label_tCode.Content = command[2];
+                            papagoWindow.Label_sText.Content = sourceText;
+                            papagoWindow.Label_tText.Content = targetText;
                         }
 
                         break;
@@ -183,7 +186,7 @@ namespace Kbar.Net
         {
             window.Show();
             window.Left = Left;
-            window.Top = Top + Height - 10;
+            window.Top = Top + Height / 3 - 21;
         }
 
         //private void Grid_Closing(object sender, System.ComponentModel.CancelEventArgs e)
