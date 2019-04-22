@@ -22,7 +22,7 @@ namespace Kbar.Net
                 case "youtube":
                     Connect_Chrome("www.youtube.com");
                     break;
-                // NAVER 
+                // NAVER
                 case "n":
                 case "naver":
                     Connect_Chrome("www.naver.com");
@@ -42,6 +42,12 @@ namespace Kbar.Net
                     break;
                 case "daum":
                     Connect_Chrome("www.daum.net");
+                    break;
+                case "dc":
+                    Connect_Chrome("www.dcinside.com");
+                    break;
+                case "dcpr":
+                    Connect_Chrome("gall.dcinside.com/board/lists/?id=programming");
                     break;
             }
         }
