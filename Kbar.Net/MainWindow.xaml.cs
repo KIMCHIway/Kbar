@@ -49,6 +49,8 @@ namespace Kbar.Net
 
             Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
             Visibility = Visibility.Hidden;
+
+            CommandBox.Focusable = true;
         }
 		
 
@@ -59,37 +61,21 @@ namespace Kbar.Net
             {
                 if (isTurn)
                 {
-                    CommandBox.Text = string.Empty;
+                    Hide_MainWindow();
 
                     Close_SubWindow();
-
-                    Visibility = Visibility.Hidden;
-                    isTurn = false;
-
                 }
                 else
                 {
-                    PapagoWindow papagoWindow = new PapagoWindow();
-                    Load_SubWindow(papagoWindow);
-
-                    Visibility = Visibility.Visible;
-                    isTurn = true;
-
-                    // Focus on TextBox when it turns on
-                    CommandBox.Focusable = true;
-                    CommandBox.Focus();
+                    Display_MainWindow();
                 }
             }
 
             if (e.KeyPressed.ToString() == "Escape")
             {
-                CommandBox.Text = string.Empty;
+                Hide_MainWindow();
 
                 Close_SubWindow();
-
-                Visibility = Visibility.Hidden;
-                isTurn = false;
-
             }
 
 
@@ -108,6 +94,9 @@ namespace Kbar.Net
 		
 		private void CommandMethod()
 		{
+            // Close sub form which is showed
+            if (cur_SubWindow != null) Close_SubWindow();
+
             // Thread ?
             // Split by blank (0 is Command)
             string[] command = CommandBox.Text.Split(' ');
@@ -117,26 +106,25 @@ namespace Kbar.Net
                 string module = command[0];
                 switch (module.ToLower())
                 {
-                    // go module
+                    // Go Module
                     case "go":
                         if (command.Length >= 2)
                         {
                             Go go = new Go();
                             go.Call_Go(command[1]);
+
+                            Hide_MainWindow();
                         }
 
                         break;
 
-                    // papago module
+                    // Papago Module
                     case "papago":
                     case "nt":
                     case "ntranslation":
                     case "translation":
                         if (command.Length >= 4)
                         {
-                            // Close sub form which is showed
-                            if (cur_SubWindow != null) cur_SubWindow.Close();
-
                             // Turn on new sub form
                             PapagoWindow papagoWindow = new PapagoWindow();
                             Load_SubWindow(papagoWindow);
@@ -164,6 +152,55 @@ namespace Kbar.Net
                         }
 
                         break;
+
+                    // Naver Dictionary Module
+                    case "nd":
+                    case "ndictionary":
+                    case "dictionary":
+                        if (command.Length >= 3)
+                        {
+                            string[] locations = new string[command.Length - 2]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 2, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+                            
+
+                        }
+
+                        break;
+
+                    // Naver Map Module
+                    case "nm":
+                    case "nmap":
+                        if (command.Length >= 2)
+                        {
+                            string[] locations = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_NaverMap(locations);
+
+                            Hide_MainWindow();
+                        }
+
+                        break;
+
+                    // Google Map Module
+                    case "gm":
+                    case "gmap":
+                    case "map":
+                        if (command.Length >= 2)
+                        {
+                            string[] locations = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_GoogleMap(locations);
+
+                            Hide_MainWindow();
+                        }
+
+                        break;
                 }
             }
             else if (command.Length == 0)
@@ -171,6 +208,24 @@ namespace Kbar.Net
                 // if Sub Windows is showed, intialize state variable
                 Close_SubWindow();
             }
+        }
+
+        private void Display_MainWindow()
+        {
+            Visibility = Visibility.Visible;
+            isTurn = true;
+
+            // Focus on TextBox when it turns on
+            CommandBox.Focus();
+        }
+
+        private void Hide_MainWindow()
+        {
+            // Clear input box
+            CommandBox.Text = string.Empty;
+
+            Visibility = Visibility.Hidden;
+            isTurn = false;
         }
 
         private void Close_SubWindow()
