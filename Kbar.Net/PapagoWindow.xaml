@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="SubForm.png"/>
         </Grid.Background>
-        <Label Content="Papago" HorizontalAlignment="Left" Margin="29,86,0,0" VerticalAlignment="Top" FontSize="25" VerticalContentAlignment="Center" FontFamily="Core Gothic D 8 Heavy"/>
+        <Label Content="Papago" HorizontalAlignment="Left" Margin="51,88,0,0" VerticalAlignment="Top" FontSize="25" VerticalContentAlignment="Center" FontFamily="Core Gothic D 8 Heavy"/>
         <Rectangle HorizontalAlignment="Left" Height="195" Margin="50,134,0,0" Stroke="#FF40E040" VerticalAlignment="Top" Width="556" StrokeThickness="6"/>
         <Label x:Name="Label_sCode" Content="ko" HorizontalAlignment="Left" Margin="56,134,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium"/>
         <Label x:Name="Label_tCode" Content="en" HorizontalAlignment="Left" Margin="361,134,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium"/>

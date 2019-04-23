@@ -128,6 +128,8 @@ namespace Kbar.Net
                             // Turn on new sub form
                             PapagoWindow papagoWindow = new PapagoWindow();
                             Load_SubWindow(papagoWindow);
+                            // Move Main window to top
+                            Activate();
 
                             // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
                             string sourceText = string.Empty;
@@ -159,10 +161,14 @@ namespace Kbar.Net
                     case "dictionary":
                         if (command.Length >= 3)
                         {
-                            string[] locationArray = new string[command.Length - 2]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 2, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
-                            
+                            string[] textArray = new string[command.Length - 2]; // nd code text1 text2 -> need (length - 2)
+                            Array.Copy(command, 2, textArray, 0, textArray.Length); // source array, source start index, target array, target start indext, count
 
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_NaverDictionary(command[1], textArray);
+
+                            Hide_MainWindow();
                         }
 
                         break;
