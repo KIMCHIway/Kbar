@@ -159,8 +159,8 @@ namespace Kbar.Net
                     case "dictionary":
                         if (command.Length >= 3)
                         {
-                            string[] locations = new string[command.Length - 2]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 2, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+                            string[] locationArray = new string[command.Length - 2]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 2, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
                             
 
                         }
@@ -172,12 +172,12 @@ namespace Kbar.Net
                     case "nmap":
                         if (command.Length >= 2)
                         {
-                            string[] locations = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 1, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
 
                             // Use Go Module
                             Go go = new Go();
-                            go.Call_NaverMap(locations);
+                            go.Call_NaverMap(locationArray);
 
                             Hide_MainWindow();
                         }
@@ -190,12 +190,12 @@ namespace Kbar.Net
                     case "map":
                         if (command.Length >= 2)
                         {
-                            string[] locations = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 1, locations, 0, locations.Length); // source array, source start index, target array, target start indext, count
+                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
 
                             // Use Go Module
                             Go go = new Go();
-                            go.Call_GoogleMap(locations);
+                            go.Call_GoogleMap(locationArray);
 
                             Hide_MainWindow();
                         }

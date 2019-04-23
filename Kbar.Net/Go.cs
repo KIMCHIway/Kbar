@@ -52,18 +52,60 @@ namespace Kbar.Net
             }
         }
 
-        public void Call_NaverMap(string[] locations)
+        public void Call_NaverDictionary(string language, string[] textArray)
         {
-            string location = Combine_NaverBlank(locations);
-            string url = "https://beta.map.naver.com/search/" + location;
-            Process.Start("Chrome.exe", url);
+            string text = Combine_NaverBlank(textArray);
+
+            switch (language.ToLower())
+            {
+                case "en":
+                    Connect_Chrome("https://endic.naver.com/search.nhn?query=" + text);
+                    break;
+                case "enen":
+                    Connect_Chrome("https://dict.naver.com/enendict/#/search?query=" + text);
+                    break;
+                case "ko":
+                    Connect_Chrome("https://ko.dict.naver.com/search.nhn?query=" + text);
+                    break;
+                case "cc":
+                    Connect_Chrome("https://hanja.dict.naver.com/search.nhn?query=" + text);
+                    break;
+                case "ja":
+                    Connect_Chrome("https://ja.dict.naver.com/search.nhn?query=" + text);
+                    break;
+                case "ch":
+                case "zh":
+                    Connect_Chrome("https://zh.dict.naver.com/search.nhn?query=" + text);
+                    break;
+                case "fr":
+                    Connect_Chrome("https://dict.naver.com/frkodict/#/search?query=" + text);
+                    break;
+                case "sp":
+                case "es":
+                    Connect_Chrome("https://dict.naver.com/eskodict/#/search?query=" + text);
+                    break;
+                case "ge":
+                case "de":
+                    Connect_Chrome("https://dict.naver.com/dekodict/#/search?query=" + text);
+                    break;
+                case "vi":
+                    Connect_Chrome("https://dict.naver.com/vikodict/#/search?query=" + text);
+                    break;
+            }
         }
 
-        public void Call_GoogleMap(string[] locations)
+        public void Call_NaverMap(string[] locationArray)
         {
-            string location = Combine_GoogleBlank(locations);
+            string location = Combine_NaverBlank(locationArray);
+            string url = "https://beta.map.naver.com/search/" + location;
+            Connect_Chrome(url);
+        }
+
+        public void Call_GoogleMap(string[] locationArray)
+        {
+            string location = Combine_GoogleBlank(locationArray);
             string url = "https://www.google.com/maps/search/?api=1&query=" + location;
-            Process.Start("Chrome.exe", url);
+            Connect_Chrome(url);
         }
 
         private string Combine_NaverBlank(string[] array)

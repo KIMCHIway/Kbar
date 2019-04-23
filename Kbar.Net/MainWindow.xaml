@@ -10,6 +10,6 @@
             <ImageBrush ImageSource="BarForm.png"/>
         </Grid.Background>
         <Label x:Name="label1" HorizontalAlignment="Left" Margin="102,32,0,0" VerticalAlignment="Top" Width="286"/>
-        <TextBox x:Name="CommandBox" HorizontalAlignment="Left" Height="42" Margin="108,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="28" TextChanged="CommandBox_TextChanged" FontFamily="Core Gothic D 7 ExtraBold" Text="papago" VerticalContentAlignment="Center" BorderThickness="0"/>
+        <TextBox x:Name="CommandBox" HorizontalAlignment="Left" Height="42" Margin="108,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="28" TextChanged="CommandBox_TextChanged" FontFamily="Core Gothic D 7 ExtraBold" VerticalContentAlignment="Center" BorderThickness="0"/>
     </Grid>
 </Window>

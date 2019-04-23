@@ -19,8 +19,8 @@ namespace Kbar.Net
 		public string Call_Papago(string sCode, string tCode, string sText)
 		{
             // Save parameter
-            sourceCode = sCode;
-            targetCode = tCode;
+            sourceCode = Change_CommonCode(sCode);
+            targetCode = Change_CommonCode(tCode);
             sourceText = sText;
 
 
@@ -54,5 +54,33 @@ namespace Kbar.Net
 
             return tText;
 		}
+
+        private string Change_CommonCode(string _code)
+        {
+            string code = _code;
+            switch (code.ToLower())
+            {
+                case "zh-cn":
+                case "ch-cn":
+                    code = "zh-CN";
+                    break;
+                case "zh-tw":
+                case "ch-tw":
+                    code = "zh-TW";
+                    break;
+                case "ge":
+                    code = "de";
+                    break;
+                case "sp":
+                    code = "es";
+                    break;
+                case "in":
+                    code = "id";
+                    break;
+            }
+
+
+            return code;
+        }
     }
 }
