@@ -14,3 +14,6 @@ E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csproj.GenerateResourc
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csproj.CoreCompileInputs.cache
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.exe
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.pdb
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\HelpWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\HelpWindow.baml
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csprojAssemblyReference.cache

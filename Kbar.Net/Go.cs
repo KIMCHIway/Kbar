@@ -130,7 +130,7 @@ namespace Kbar.Net
             return text;
         }
 
-        private void Connect_Chrome(string url)
+        public void Connect_Chrome(string url)
         {
             Process.Start("Chrome.exe", url);
         }

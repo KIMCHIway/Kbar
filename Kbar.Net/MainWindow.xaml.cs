@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static System.Console;
+using Microsoft.Win32;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 // Kbar command docs : https://docs.google.com/document/d/1-0STF1GnlQi-IYj8PNtPBaO657w1jOwlGT1H6X81nZw/edit?usp=sharing
 // Code of GUI MainWindows.xaml 
@@ -24,7 +26,9 @@ namespace Kbar.Net
 	
     public partial class MainWindow : Window
     {
-        private LowKeyListener _listener;
+        RegistryKey runRegKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        NotifyIcon ni = new NotifyIcon();
+        LowKeyListener _listener;
 
         // To delete the sub window which is turn on
         private dynamic cur_SubWindow;
@@ -44,6 +48,59 @@ namespace Kbar.Net
 		
 		private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                System.Windows.Forms.ContextMenu menu = new System.Windows.Forms.ContextMenu();
+
+                System.Windows.Forms.MenuItem item1 = new System.Windows.Forms.MenuItem();
+                System.Windows.Forms.MenuItem item2 = new System.Windows.Forms.MenuItem();
+                System.Windows.Forms.MenuItem item3 = new System.Windows.Forms.MenuItem();
+                menu.MenuItems.Add(item1);
+                menu.MenuItems.Add(item2);
+                menu.MenuItems.Add(item3);
+                item1.Index = 0;
+                item1.Text = "Help";
+                item1.Click += delegate (object click, EventArgs eClick)
+                {
+                    HelpWindow helpWindow = new HelpWindow();
+                    helpWindow.Show();
+                };
+                item2.Index = 1;
+                item2.Text = "Register as StartProcess";
+                item2.Click += delegate (object click, EventArgs eClick)
+                {
+                    if (item2.Checked == true)
+                    {
+                        item2.Checked = false;
+                        runRegKey.DeleteValue("Kbar.Net", false);
+                    }
+                    else
+                    {
+                        item2.Checked = true;
+                        runRegKey.SetValue("Kbar.Net", Environment.CurrentDirectory + "\\" + AppDomain.CurrentDomain.FriendlyName);
+                    }
+                };
+                item3.Index = 2;
+                item3.Text = "Exit";
+                item3.Click += delegate (object click, EventArgs eClick)
+                {
+                    System.Windows.Application.Current.Shutdown();
+                };
+                ni.Icon = new System.Drawing.Icon("SampleIcon.ico");
+                ni.Visible = true;
+                ni.DoubleClick += delegate (object senders, EventArgs args)
+                {
+                    Display_MainWindow();
+                };
+                ni.ContextMenu = menu;
+                ni.Text = "Kbar.Net";
+
+            }
+            catch
+            {
+                MessageBox.Show("101 ERROR CODE. \r Report to https://github.com/KIMCHIway/Kbar");
+            }
+
             ShowInTaskbar = false;
             Topmost = true;
 

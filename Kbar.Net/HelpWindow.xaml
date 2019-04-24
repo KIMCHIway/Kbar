@@ -1,0 +1,23 @@
+﻿<Window x:Class="Kbar.Net.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kbar.Net"
+        mc:Ignorable="d"
+        Title="HelpWindow" Height="379" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Grid Width="662" Height="379" Margin="0,0,-8,-8" Loaded="Grid_Loaded">
+        <Grid.Background>
+            <ImageBrush ImageSource="SubForm.png"/>
+        </Grid.Background>
+        <Label Content="Help" HorizontalAlignment="Left" Margin="64,61,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 7 ExtraBold" FontSize="30"/>
+        <Label Content="[Shortcuts]" HorizontalAlignment="Left" Margin="64,98,0,0" VerticalAlignment="Top" Height="34" Width="524" FontFamily="Core Gothic D 6 Bold" FontSize="20" HorizontalContentAlignment="Center"/>
+        <Label Content="F8 : Turn on or Turn off Bar &#10;ESC : Turn off Bar" HorizontalAlignment="Left" Margin="64,132,0,0" VerticalAlignment="Top" Height="74" Width="524" FontFamily="Core Gothic D 3 Light" FontSize="20" HorizontalContentAlignment="Center"/>
+        <Label Content="[Command and Error code Docs]" HorizontalAlignment="Left" Margin="64,195,0,0" VerticalAlignment="Top" Height="34" Width="524" FontFamily="Core Gothic D 6 Bold" FontSize="20" HorizontalContentAlignment="Center"/>
+        <Label Content="To see command list, go to &#xA;&quot;https://github.com/KIMCHIway/Kbar&quot;" HorizontalAlignment="Left" Margin="64,229,0,0" VerticalAlignment="Top" Height="69" Width="524" FontFamily="Core Gothic D 3 Light" FontSize="20" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFEAEAEA" HorizontalAlignment="Left" Height="23" Margin="340,307,0,0" VerticalAlignment="Top" Width="2"/>
+        <Label x:Name="Button_Github" Content="Go to Github" HorizontalAlignment="Left" Margin="102,298,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Width="151" Height="39" HorizontalContentAlignment="Center" MouseLeftButtonDown="Button_Github_MouseLeftButtonDown"/>
+        <Label x:Name="Button_Close" Content="Close" HorizontalAlignment="Right" Margin="0,298,102,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Width="151" Height="39" HorizontalContentAlignment="Center" MouseLeftButtonDown="Button_Close_MouseLeftButtonDown"/>
+
+    </Grid>
+</Window>
