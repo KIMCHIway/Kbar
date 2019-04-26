@@ -44,10 +44,7 @@ namespace Kbar.Net
             _listener.OnKeyPressed += _listener_OnKeyPressed;
 
             _listener.HookKeyboard();
-        }
-		
-		private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
+
             try
             {
                 System.Windows.Forms.ContextMenu menu = new System.Windows.Forms.ContextMenu();
@@ -58,6 +55,7 @@ namespace Kbar.Net
                 menu.MenuItems.Add(item1);
                 menu.MenuItems.Add(item2);
                 menu.MenuItems.Add(item3);
+
                 item1.Index = 0;
                 item1.Text = "Help";
                 item1.Click += delegate (object click, EventArgs eClick)
@@ -65,8 +63,18 @@ namespace Kbar.Net
                     HelpWindow helpWindow = new HelpWindow();
                     helpWindow.Show();
                 };
+
                 item2.Index = 1;
                 item2.Text = "Register as StartProcess";
+                // Check whether the program register
+                if (runRegKey.GetValue("Kbar.Net") == null)
+                {
+                    item2.Checked = false;
+                }
+                else
+                {
+                    item2.Checked = true;
+                }
                 item2.Click += delegate (object click, EventArgs eClick)
                 {
                     if (item2.Checked == true)
@@ -80,13 +88,15 @@ namespace Kbar.Net
                         runRegKey.SetValue("Kbar.Net", Environment.CurrentDirectory + "\\" + AppDomain.CurrentDomain.FriendlyName);
                     }
                 };
+                
                 item3.Index = 2;
                 item3.Text = "Exit";
                 item3.Click += delegate (object click, EventArgs eClick)
                 {
                     System.Windows.Application.Current.Shutdown();
                 };
-                ni.Icon = new System.Drawing.Icon("SampleIcon.ico");
+
+                ni.Icon = new System.Drawing.Icon("./SampleIcon.ico");
                 ni.Visible = true;
                 ni.DoubleClick += delegate (object senders, EventArgs args)
                 {
@@ -94,23 +104,24 @@ namespace Kbar.Net
                 };
                 ni.ContextMenu = menu;
                 ni.Text = "Kbar.Net";
-
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("101 ERROR CODE. \r Report to https://github.com/KIMCHIway/Kbar");
+                MessageBox.Show(e.Message + "\r Report to https://github.com/KIMCHIway/Kbar", "101 ERROR CODE");
             }
-
+        }
+		
+		private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
             ShowInTaskbar = false;
             Topmost = true;
 
+            CommandBox.Focusable = true;
+
             Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
             Visibility = Visibility.Hidden;
-
-            CommandBox.Focusable = true;
         }
 		
-
         void _listener_OnKeyPressed(object sender, KeyPressedArgs e)
         {
             // Hotkey for window
