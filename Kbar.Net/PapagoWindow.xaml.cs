@@ -34,5 +34,10 @@ namespace Kbar.Net
         {
             Close();
         }
+
+        private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

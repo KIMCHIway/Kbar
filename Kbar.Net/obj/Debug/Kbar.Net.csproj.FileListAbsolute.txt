@@ -17,3 +17,5 @@ E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csproj.CoreCompileInputs
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.exe
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.pdb
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csprojAssemblyReference.cache
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\CommandWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\CommandWindow.baml

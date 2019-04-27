@@ -136,6 +136,8 @@ namespace Kbar.Net
                 else
                 {
                     Display_MainWindow();
+                    CommandWindow CommandWindow = new CommandWindow();
+                    Load_SubWindow(CommandWindow);
                 }
             }
 
