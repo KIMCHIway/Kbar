@@ -16,6 +16,7 @@ namespace Kbar.Net
                 case "facebook":
                     Connect_Chrome("https://www.facebook.com");
                     break;
+                case "g":
                 case "google":
                     Connect_Chrome("https://www.google.com");
                     break;

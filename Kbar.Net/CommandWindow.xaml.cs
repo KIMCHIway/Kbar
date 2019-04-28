@@ -99,6 +99,11 @@ namespace Kbar.Net
                                     where command.Key.StartsWith(text)
                                     select command).ToDictionary(i => i.Key, i => i.Value);
                     break;
+                case "go":
+                    matchingValue = (from command in command.go
+                                     where command.Key.StartsWith(text)
+                                     select command).ToDictionary(i => i.Key, i => i.Value);
+                    break;
             }
 
             // Only (count of search result > 0)

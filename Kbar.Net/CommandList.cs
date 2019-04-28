@@ -10,31 +10,32 @@ namespace Kbar.Net
     {
         public IReadOnlyDictionary<string, string> modules = new Dictionary<string, string>()
         {
-            {"papago", "Naver NMT Translation"},
-            {"nt", "Naver NMT Translation" },
-            {"ntranslation", "Naver NMT Translation" },
-            {"translation", "Naver NMT Translation" },
+            {"papago", "Use Naver NMT Translator"},
+            {"nt", "Use Naver NMT Translator" },
+            {"ntranslation", "Use Naver NMT Translator" },
+            {"translation", "Use Naver NMT Translator" },
             //
-            {"gt", "Google SMT Translation" },
-            {"gtranslation", "Google SMT Translation" },
+            {"gt", "Use Google SMT Translator" },
+            {"gtranslation", "Use Google SMT Translator" },
             //
-            {"nm", "Naver Map" },
-            {"nmap", "Naver Map" },
+            {"nm", "Open Naver Map" },
+            {"nmap", "Open Naver Map" },
             //
-            {"gm", "Google Map" },
-            {"gmap", "Google Map" },
-            {"map", "Google Map" },
+            {"gm", "Open Google Map" },
+            {"gmap", "Open Google Map" },
+            {"map", "Open Google Map" },
             //
-            {"wiki", "Wiki Pedia" },
+            {"go", "Connect Website directly" }
+            //{"wiki", "Wiki Pedia" },
             //
-            {"money", "Exchange Rate" },
-            {"currency", "Exchange Rate" },
+            //{"money", "Exchange Rate" },
+            //{"currency", "Exchange Rate" },
             //
-            {"weather", "World Weather" },
+            //{"weather", "World Weather" },
             //
-            {"time", "World Time" },
+            //{"time", "World Time" },
             //
-            {"note", "Notepad" },
+            //{"note", "Notepad" },
         };
 
         public IReadOnlyDictionary<string, string> papago = new Dictionary<string, string>()
@@ -76,6 +77,21 @@ namespace Kbar.Net
             {"sp", "Spain Dictionary" }
         };
 
-
+        public IReadOnlyDictionary<string, string> go = new Dictionary<string, string>()
+        {
+            {"facebook", "Facebook" },
+            {"g", "Google Main" },
+            {"google", "Google Main" },
+            {"youtube", "Youtube" },
+            {"n", "Naver Main" },
+            {"naver", "Naver Main" },
+            {"nd", "Naver Dictionary Home" },
+            {"papago", "Naver NMT Translator" },
+            {"ntranslation", "Naver NMT Translator" },
+            {"nmap", "Naver Map" },
+            {"daum", "Daum Main" },
+            {"dc", "Dcinside Main" },
+            {"dcpr", "Dcinside Programming Gallery" }
+        };
     }
 }
