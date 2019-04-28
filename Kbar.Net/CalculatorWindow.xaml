@@ -1,0 +1,21 @@
+﻿<Window x:Class="Kbar.Net.CalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kbar.Net"
+        mc:Ignorable="d"
+        Title="CalculatorWindow" Height="379" Width="662" Background="{x:Null}" Foreground="{x:Null}" WindowStyle="None">
+    <Grid Height="379" Margin="-4">
+        <Grid.Background>
+            <ImageBrush ImageSource="SubForm.png"/>
+        </Grid.Background>
+        <Label Content="Calculator" Margin="65,105,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" FontFamily="Core Gothic D 7 ExtraBold" Foreground="#FF39E2A4" HorizontalAlignment="Left" RenderTransformOrigin="0.322,0.462"/>
+        <Label x:Name="Button_Close" Content="Close" Margin="102,298,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Height="39" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="168" MouseLeftButtonDown="Button_Close_MouseLeftButtonDown"/>
+        <Rectangle Fill="#FFEAEAEA" HorizontalAlignment="Left" Height="23" Margin="340,307,0,0" VerticalAlignment="Top" Width="2"/>
+        <Label x:Name="Button_Copy" Content="Copy Result" Margin="0,298,102,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Height="39" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="168" MouseLeftButtonDown="Button_Copy_MouseLeftButtonDown"/>
+        <TextBlock x:Name="Text_Expression" Text="50 + 50" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="65,170,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium" Width="536" Height="88"/>
+        <TextBlock x:Name="Text_Result" Text="= 100" Margin="65,263,56,0" VerticalAlignment="Top" Height="30" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

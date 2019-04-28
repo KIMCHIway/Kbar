@@ -325,6 +325,20 @@ namespace Kbar.Net
                         }
 
                         break;
+                    // Calculator Module
+                    //case "calc":
+                    //case "calculator":
+                    //    if (command.Length >= 2)
+                    //    {
+                    //        // Combine seperated expression
+                    //        string expression = string.Empty;
+                    //        for (int i = 1; i < command.Length; i++)
+                    //        {
+                    //            expression += command[i];
+                    //        }
+                            
+                    //    }
+                    //    break;
                 }
             }
             else if (command.Length == 0)
@@ -352,7 +366,7 @@ namespace Kbar.Net
             isTurn = false;
         }
 
-        private void Close_CommandWindow()
+        public void Close_CommandWindow()
         {
             if (cur_CommandWindow != null)
             {
@@ -361,7 +375,7 @@ namespace Kbar.Net
             }
         }
 
-        private void Close_SubWindow()
+        public void Close_SubWindow()
         {
             if (cur_SubWindow != null)
             {

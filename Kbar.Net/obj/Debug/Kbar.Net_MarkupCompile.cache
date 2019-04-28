@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\App.xaml
-41654301824
+619433177
 
-12538897527
+14448028044
 151397803362
-CommandWindow.xaml;MainWindow.xaml;PapagoWindow.xaml;HelpWindow.xaml;
+CalculatorWindow.xaml;CommandWindow.xaml;MainWindow.xaml;NotepadWindow.xaml;PapagoWindow.xaml;HelpWindow.xaml;
 
 False
 

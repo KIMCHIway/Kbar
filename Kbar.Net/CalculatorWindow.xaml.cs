@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace Kbar.Net
 {
     /// <summary>
-    /// PapagoWindow.xaml에 대한 상호 작용 논리
+    /// CalculatorWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PapagoWindow : Window
+    public partial class CalculatorWindow : Window
     {
-        public PapagoWindow()
+        public CalculatorWindow()
         {
             InitializeComponent();
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            ShowInTaskbar = false;
-            Topmost = true;
         }
 
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -37,7 +31,7 @@ namespace Kbar.Net
 
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Clipboard.SetText(Text_tText.Text);
+            Clipboard.SetText(Text_Result.Text);
         }
     }
 }

@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CalculatorWindow.xaml.cs">
+      <DependentUpon>CalculatorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CommandList.cs" />
     <Compile Include="CommandWindow.xaml.cs">
       <DependentUpon>CommandWindow.xaml</DependentUpon>
@@ -65,6 +68,10 @@
     <Compile Include="HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CalculatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CommandWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NotepadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PapagoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +104,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotepadWindow.xaml.cs">
+      <DependentUpon>NotepadWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Papago.cs" />
     <Compile Include="PapagoWindow.xaml.cs">
       <DependentUpon>PapagoWindow.xaml</DependentUpon>

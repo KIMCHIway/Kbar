@@ -17,3 +17,9 @@ E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.pdb
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\HelpWindow.g.cs
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\HelpWindow.baml
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\Kbar.Net.csprojAssemblyReference.cache
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\CalculatorWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\CommandWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\NotepadWindow.g.cs
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\CalculatorWindow.baml
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\CommandWindow.baml
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Release\NotepadWindow.baml
