@@ -32,6 +32,7 @@ namespace Kbar.Net
 
         // To delete the sub window which is turn on
         private dynamic cur_SubWindow;
+        private dynamic cur_CommandWindow;
         // To seperate what to do when F8 is pressed
         private bool isTurn; 
 
@@ -136,8 +137,6 @@ namespace Kbar.Net
                 else
                 {
                     Display_MainWindow();
-                    CommandWindow CommandWindow = new CommandWindow();
-                    Load_SubWindow(CommandWindow);
                 }
             }
 
@@ -159,19 +158,69 @@ namespace Kbar.Net
 
         private void CommandBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // module check
+            // Close sub form which is showed
+            if (cur_SubWindow != null) Close_SubWindow();
+            if (cur_CommandWindow == null)
+            {
+                CommandWindow commandWindow = new CommandWindow();
+                Load_SecondWindow(commandWindow);
+
+                cur_CommandWindow = commandWindow;
+
+                Activate();
+            }
+
+            string[] command = CommandBox.Text.ToLower().Split(' ');
+            
+            if (command.Length == 1) // INPUT module
+            {
+                // Close and return when there is no input
+                if (string.IsNullOrWhiteSpace(command[0]))
+                {
+                    Close_CommandWindow();
+                    return;
+                }
+
+                // Close if there is no search result
+                if (cur_CommandWindow.Load_RelatedCommand(command[0]) == false)
+                {
+                    Close_CommandWindow();
+                }
+            }
+            else if (command.Length > 1 )// INPUT command of module
+            {
+                int index = command.Length - 1; // index = length - 1
+
+                if (string.IsNullOrWhiteSpace(command[index]))
+                {
+                    Close_CommandWindow();
+                    return;
+                }
+
+                if (cur_CommandWindow.Load_RelatedCommand(command[0], command[index]) == false)
+                {
+                    Close_CommandWindow();
+                }
+            }
+            else if (command.Length > 3) // Max count of Command is 3, No need to Search for user input
+            {
+                return;
+            }
+            
         }
 		
 		private void CommandMethod()
 		{
-            // Close sub form which is showed
+            // Close Second Window which is showed
             if (cur_SubWindow != null) Close_SubWindow();
+            if (cur_CommandWindow != null) Close_CommandWindow();
 
             // Thread ?
             // Split by blank (0 is Command)
+            // Don't do ToLower() here for user input (Not command)
             string[] command = CommandBox.Text.Split(' ');
 
-            if (command.Length > 0)
+            if (command.Length > 1) // Check command only when format is right
             {
                 string module = command[0];
                 switch (module.ToLower())
@@ -195,10 +244,11 @@ namespace Kbar.Net
                     case "translation":
                         if (command.Length >= 4)
                         {
-                            // Turn on new sub form
                             PapagoWindow papagoWindow = new PapagoWindow();
-                            Load_SubWindow(papagoWindow);
-                            // Move Main window to top
+                            Load_SecondWindow(papagoWindow);
+
+                            cur_SubWindow = papagoWindow;
+
                             Activate();
 
                             // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
@@ -212,15 +262,13 @@ namespace Kbar.Net
                             Papago papago = new Papago();
                             string targetText = papago.Call_Papago(command[1], command[2], sourceText);
 
-                            // Allocate state variable
-                            cur_SubWindow = papagoWindow;
 
 
                             // Set window component
-                            papagoWindow.Label_sCode.Content = command[1];
-                            papagoWindow.Label_tCode.Content = command[2];
-                            papagoWindow.Label_sText.Content = sourceText;
-                            papagoWindow.Label_tText.Content = targetText;
+                            papagoWindow.Text_sCode.Text = command[1];
+                            papagoWindow.Text_tCode.Text = command[2];
+                            papagoWindow.Text_sText.Text = sourceText;
+                            papagoWindow.Text_tText.Text = targetText;
                         }
 
                         break;
@@ -304,6 +352,15 @@ namespace Kbar.Net
             isTurn = false;
         }
 
+        private void Close_CommandWindow()
+        {
+            if (cur_CommandWindow != null)
+            {
+                cur_CommandWindow.Close();
+                cur_CommandWindow = null;
+            }
+        }
+
         private void Close_SubWindow()
         {
             if (cur_SubWindow != null)
@@ -313,7 +370,7 @@ namespace Kbar.Net
             }
         }
 
-        private void Load_SubWindow(dynamic window)
+        private void Load_SecondWindow(dynamic window)
         {
             window.Show();
             window.Left = Left;

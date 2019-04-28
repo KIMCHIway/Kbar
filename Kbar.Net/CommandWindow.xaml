@@ -13,15 +13,15 @@
         <Grid.Background>
             <ImageBrush ImageSource="SubForm.png"/>
         </Grid.Background>
-        <Label x:Name="NameIndex0" Content="Label" HorizontalAlignment="Left" Margin="65,100,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="NameIndex1" Content="Label" HorizontalAlignment="Left" Margin="65,147.5,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="NameIndex2" Content="Label" HorizontalAlignment="Left" Margin="65,195,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="NameIndex3" Content="Label" HorizontalAlignment="Left" Margin="65,242.5,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="NameIndex4" Content="Label" HorizontalAlignment="Left" Margin="65,290,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold"/>
-        <Label x:Name="DescriptionIndex0" Content="(Module)" HorizontalAlignment="Left" Margin="300,100,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
-        <Label x:Name="DescriptionIndex1" Content="(Module)" HorizontalAlignment="Left" Margin="300,147.5,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
-        <Label x:Name="DescriptionIndex2" Content="(Module)" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
-        <Label x:Name="DescriptionIndex3" Content="(Module)" HorizontalAlignment="Left" Margin="300,242.5,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
-        <Label x:Name="DescriptionIndex4" Content="(Module)" HorizontalAlignment="Left" Margin="300,290,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
+        <TextBlock x:Name="NameIndex0" Text="Label" HorizontalAlignment="Left" Margin="65,105,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock x:Name="NameIndex1" Text="Label" HorizontalAlignment="Left" Margin="65,152,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock x:Name="NameIndex2" Text="Label" HorizontalAlignment="Left" Margin="65,200,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock x:Name="NameIndex3" Text="Label" HorizontalAlignment="Left" Margin="65,248,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock x:Name="NameIndex4" Text="Label" HorizontalAlignment="Left" Margin="65,295,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock x:Name="DescriptionIndex0" Text="Module" HorizontalAlignment="Left" Margin="300,105,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
+        <TextBlock x:Name="DescriptionIndex1" Text="Module" HorizontalAlignment="Left" Margin="300,152,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
+        <TextBlock x:Name="DescriptionIndex2" Text="Module" HorizontalAlignment="Left" Margin="300,200,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
+        <TextBlock x:Name="DescriptionIndex3" Text="Module" HorizontalAlignment="Left" Margin="300,248,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
+        <TextBlock x:Name="DescriptionIndex4" Text="Module" HorizontalAlignment="Left" Margin="300,295,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 4 Regular" FontSize="20" Foreground="#FFBFBFBF"/>
     </Grid>
 </Window>
