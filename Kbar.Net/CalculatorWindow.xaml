@@ -15,7 +15,7 @@
         <Rectangle Fill="#FFEAEAEA" HorizontalAlignment="Left" Height="23" Margin="340,307,0,0" VerticalAlignment="Top" Width="2"/>
         <Label x:Name="Button_Copy" Content="Copy Result" Margin="0,298,102,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Height="39" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Width="168" MouseLeftButtonDown="Button_Copy_MouseLeftButtonDown"/>
         <TextBlock x:Name="Text_Expression" Text="50 + 50" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="65,170,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium" Width="536" Height="88"/>
-        <TextBlock x:Name="Text_Result" Text="= 100" Margin="65,263,56,0" VerticalAlignment="Top" Height="30" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontWeight="Bold"/>
+        <TextBlock x:Name="Text_Result" Text="= 100" Margin="65,263,56,0" VerticalAlignment="Top" Height="30" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
     </Grid>
 </Window>

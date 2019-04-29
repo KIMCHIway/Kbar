@@ -151,5 +151,16 @@
   <ItemGroup>
     <Resource Include="BarForm.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NotoSans-Black.ttf" />
+    <Resource Include="Resources\NotoSans-Bold.ttf" />
+    <Resource Include="Resources\NotoSans-ExtraBold.ttf" />
+    <Resource Include="Resources\NotoSans-ExtraLight.ttf" />
+    <Resource Include="Resources\NotoSans-Light.ttf" />
+    <Resource Include="Resources\NotoSans-Medium.ttf" />
+    <Resource Include="Resources\NotoSans-Regular.ttf" />
+    <Resource Include="Resources\NotoSans-SemiBold.ttf" />
+    <None Include="Resources\SampleIcon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

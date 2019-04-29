@@ -1,6 +1,7 @@
-E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Debug\Kbar.Net.exe.config
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Debug\Kbar.Net.exe
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Debug\Kbar.Net.exe.config
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\bin\Debug\Kbar.Net.pdb
+E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csprojAssemblyReference.cache
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\MainWindow.baml
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\CalculatorWindow.g.cs
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\CommandWindow.g.cs

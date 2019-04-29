@@ -97,7 +97,8 @@ namespace Kbar.Net
                     System.Windows.Application.Current.Shutdown();
                 };
 
-                ni.Icon = new System.Drawing.Icon("./SampleIcon.ico");
+                //ni.Icon = new System.Drawing.Icon("./SampleIcon.ico");
+                ni.Icon = Properties.Resources.SampleIcon;
                 ni.Visible = true;
                 ni.DoubleClick += delegate (object senders, EventArgs args)
                 {
@@ -108,7 +109,7 @@ namespace Kbar.Net
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + "\r Report to https://github.com/KIMCHIway/Kbar", "101 ERROR CODE");
+                MessageBox.Show(e.Message + "\r Report to https://github.com/KIMCHIway/Kbar", "101 ERROR CODE [2]");
             }
         }
 		
@@ -170,19 +171,19 @@ namespace Kbar.Net
                 Activate();
             }
 
-            string[] command = CommandBox.Text.ToLower().Split(' ');
+            string[] command = CommandBox.Text.Split(' ');
             
             if (command.Length == 1) // INPUT module
             {
                 // Close and return when there is no input
-                if (string.IsNullOrWhiteSpace(command[0]))
+                if (string.IsNullOrEmpty(command[0]))
                 {
                     Close_CommandWindow();
                     return;
                 }
 
                 // Close if there is no search result
-                if (cur_CommandWindow.Load_RelatedCommand(command[0]) == false)
+                if (cur_CommandWindow.Load_RelatedCommand(command[0].ToLower()) == false)
                 {
                     Close_CommandWindow();
                 }
@@ -191,13 +192,13 @@ namespace Kbar.Net
             {
                 int index = command.Length - 1; // index = length - 1
 
-                if (string.IsNullOrWhiteSpace(command[index]))
+                if (string.IsNullOrEmpty(command[index]))
                 {
                     Close_CommandWindow();
                     return;
                 }
 
-                if (cur_CommandWindow.Load_RelatedCommand(command[0], command[index]) == false)
+                if (cur_CommandWindow.Load_RelatedCommand(command[0].ToLower(), command[index]) == false)
                 {
                     Close_CommandWindow();
                 }
