@@ -171,7 +171,7 @@ namespace Kbar.Net
                 Activate();
             }
 
-            string[] command = CommandBox.Text.Split(' ');
+            string[] command = CommandBox.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             
             if (command.Length == 1) // INPUT module
             {
@@ -219,7 +219,7 @@ namespace Kbar.Net
             // Thread ?
             // Split by blank (0 is Command)
             // Don't do ToLower() here for user input (Not command)
-            string[] command = CommandBox.Text.Split(' ');
+            string[] command = CommandBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             if (command.Length > 1) // Check command only when format is right
             {
