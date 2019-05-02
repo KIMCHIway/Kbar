@@ -104,6 +104,9 @@ namespace Kbar.Net
                                      where command.Key.StartsWith(text)
                                      select command).ToDictionary(i => i.Key, i => i.Value);
                     break;
+                // if there is no module name that is related
+                default:
+                    return false;
             }
 
             // Only (count of search result > 0)

@@ -24,6 +24,12 @@ namespace Kbar.Net
             InitializeComponent();
         }
 
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowInTaskbar = false;
+            Topmost = true;
+        }
+
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Close();

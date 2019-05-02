@@ -25,7 +25,10 @@ namespace Kbar.Net
             {"gmap", "Open Google Map" },
             {"map", "Open Google Map" },
             //
-            {"go", "Connect Website directly" }
+            {"go", "Connect Website directly" },
+            //
+            {"calc", "Calculate formula with [+ - * / ( ) ]" },
+            {"calculator", "Calculate formula with [+ - * / ( ) ]" }
             //{"wiki", "Wiki Pedia" },
             //
             //{"money", "Exchange Rate" },

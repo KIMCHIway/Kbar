@@ -245,13 +245,6 @@ namespace Kbar.Net
                     case "translation":
                         if (command.Length >= 4)
                         {
-                            PapagoWindow papagoWindow = new PapagoWindow();
-                            Load_SecondWindow(papagoWindow);
-
-                            cur_SubWindow = papagoWindow;
-
-                            Activate();
-
                             // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
                             string sourceText = string.Empty;
                             for (int i = 3; i < command.Length; i++)
@@ -264,8 +257,14 @@ namespace Kbar.Net
                             string targetText = papago.Call_Papago(command[1], command[2], sourceText);
 
 
-
                             // Set window component
+                            PapagoWindow papagoWindow = new PapagoWindow();
+                            Load_SecondWindow(papagoWindow);
+
+                            cur_SubWindow = papagoWindow;
+
+                            Activate();
+
                             papagoWindow.Text_sCode.Text = command[1];
                             papagoWindow.Text_tCode.Text = command[2];
                             papagoWindow.Text_sText.Text = sourceText;
@@ -327,19 +326,31 @@ namespace Kbar.Net
 
                         break;
                     // Calculator Module
-                    //case "calc":
-                    //case "calculator":
-                    //    if (command.Length >= 2)
-                    //    {
-                    //        // Combine seperated expression
-                    //        string expression = string.Empty;
-                    //        for (int i = 1; i < command.Length; i++)
-                    //        {
-                    //            expression += command[i];
-                    //        }
-                            
-                    //    }
-                    //    break;
+                    case "calc":
+                    case "calculator":
+                        if (command.Length >= 2)
+                        {
+                            // Combine seperated formula
+                            string formula = string.Empty;
+                            for (int i = 1; i < command.Length; i++)
+                            {
+                                formula += command[i];
+                            }
+
+                            Calculator clac = new Calculator();
+                            string result = clac.clac(formula);
+
+                            CalculatorWindow calcWindow = new CalculatorWindow();
+                            Load_SecondWindow(calcWindow);
+
+                            cur_SubWindow = calcWindow;
+
+                            Activate();
+
+                            calcWindow.Text_Formula.Text = formula;
+                            calcWindow.Text_Result.Text = result;
+                        }
+                        break;
                 }
             }
             else if (command.Length == 0)
