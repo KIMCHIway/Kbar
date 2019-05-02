@@ -258,7 +258,7 @@ namespace Kbar.Net
 
 
                             // Set window component
-                            PapagoWindow papagoWindow = new PapagoWindow();
+                            PapagoWindow papagoWindow = new PapagoWindow(this);
                             Load_SecondWindow(papagoWindow);
 
                             cur_SubWindow = papagoWindow;
@@ -340,7 +340,7 @@ namespace Kbar.Net
                             Calculator clac = new Calculator();
                             string result = clac.clac(formula);
 
-                            CalculatorWindow calcWindow = new CalculatorWindow();
+                            CalculatorWindow calcWindow = new CalculatorWindow(this);
                             Load_SecondWindow(calcWindow);
 
                             cur_SubWindow = calcWindow;

@@ -19,9 +19,12 @@ namespace Kbar.Net
     /// </summary>
     public partial class PapagoWindow : Window
     {
-        public PapagoWindow()
+        MainWindow mainWindow = new MainWindow();
+
+        public PapagoWindow(dynamic window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +41,11 @@ namespace Kbar.Net
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(Text_tText.Text);
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.Focus();
         }
     }
 }

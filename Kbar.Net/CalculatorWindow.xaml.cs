@@ -19,9 +19,12 @@ namespace Kbar.Net
     /// </summary>
     public partial class CalculatorWindow : Window
     {
-        public CalculatorWindow()
+        MainWindow mainWindow = new MainWindow();
+
+        public CalculatorWindow(dynamic window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +41,11 @@ namespace Kbar.Net
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(Text_Result.Text);
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.Focus();
         }
     }
 }

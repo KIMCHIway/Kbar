@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kbar.Net"
         mc:Ignorable="d"
-        Title="CalculatorWindow" Height="379" Width="662" AllowsTransparency="True" Background="{x:Null}" Foreground="{x:Null}" WindowStyle="None">
+        Title="CalculatorWindow" Height="379" Width="662" AllowsTransparency="True" Background="{x:Null}" Foreground="{x:Null}" WindowStyle="None" MouseDown="Window_MouseDown">
     <Grid Height="379" Width="662" Margin="-4" Loaded="Grid_Loaded">
         <Grid.Background>
             <ImageBrush ImageSource="SubForm.png"/>

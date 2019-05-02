@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kbar.Net"
         mc:Ignorable="d"
-        Title="PapagoWindow" Height="379" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+        Title="PapagoWindow" Height="379" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" MouseDown="Grid_MouseDown">
     <Grid Loaded="Grid_Loaded" Width="662" Height="379">
         <Grid.Background>
             <ImageBrush ImageSource="SubForm.png"/>
