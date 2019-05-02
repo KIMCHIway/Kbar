@@ -134,6 +134,7 @@ namespace Kbar.Net
                     Hide_MainWindow();
 
                     Close_SubWindow();
+                    Close_CommandWindow();
                 }
                 else
                 {
@@ -146,6 +147,7 @@ namespace Kbar.Net
                 Hide_MainWindow();
 
                 Close_SubWindow();
+                Close_CommandWindow();
             }
 
 
