@@ -131,23 +131,20 @@ namespace Kbar.Net
             {
                 if (isTurn)
                 {
-                    Hide_MainWindow();
-
-                    Close_SubWindow();
-                    Close_CommandWindow();
+                    ClosingMethod();
                 }
                 else
                 {
                     Display_MainWindow();
+
+                    // Focus on TextBox when it turns on
+                    CommandBox.Focus();
                 }
             }
 
             if (e.KeyPressed.ToString() == "Escape")
             {
-                Hide_MainWindow();
-
-                Close_SubWindow();
-                Close_CommandWindow();
+                ClosingMethod();
             }
 
 
@@ -157,7 +154,6 @@ namespace Kbar.Net
                 CommandMethod();
             }
         }
-
 
         private void CommandBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -218,7 +214,6 @@ namespace Kbar.Net
             if (cur_SubWindow != null) Close_SubWindow();
             if (cur_CommandWindow != null) Close_CommandWindow();
 
-            // Thread ?
             // Split by blank (0 is Command)
             // Don't do ToLower() here for user input (Not command)
             string[] command = CommandBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
@@ -235,7 +230,7 @@ namespace Kbar.Net
                             Go go = new Go();
                             go.Call_Go(command[1]);
 
-                            Hide_MainWindow();
+                            ClosingMethod();
                         }
 
                         break;
@@ -288,7 +283,7 @@ namespace Kbar.Net
                             Go go = new Go();
                             go.Call_NaverDictionary(command[1], textArray);
 
-                            Hide_MainWindow();
+                            ClosingMethod();
                         }
 
                         break;
@@ -305,7 +300,7 @@ namespace Kbar.Net
                             Go go = new Go();
                             go.Call_NaverMap(locationArray);
 
-                            Hide_MainWindow();
+                            ClosingMethod();
                         }
 
                         break;
@@ -323,7 +318,7 @@ namespace Kbar.Net
                             Go go = new Go();
                             go.Call_GoogleMap(locationArray);
 
-                            Hide_MainWindow();
+                            ClosingMethod();
                         }
 
                         break;
@@ -366,9 +361,6 @@ namespace Kbar.Net
         {
             Visibility = Visibility.Visible;
             isTurn = true;
-
-            // Focus on TextBox when it turns on
-            CommandBox.Focus();
         }
 
         private void Hide_MainWindow()
@@ -378,6 +370,14 @@ namespace Kbar.Net
 
             Visibility = Visibility.Hidden;
             isTurn = false;
+        }
+
+        private void ClosingMethod()
+        {
+            Hide_MainWindow();
+
+            Close_SubWindow();
+            Close_CommandWindow();
         }
 
         public void Close_CommandWindow()
