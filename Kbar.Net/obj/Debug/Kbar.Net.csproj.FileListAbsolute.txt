@@ -22,4 +22,3 @@ E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csproj.GenerateResource.
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csproj.CoreCompileInputs.cache
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.exe
 E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.pdb
-E:\Visual Files\C#\Kbar.Net\Kbar.Net\obj\Debug\Kbar.Net.csprojAssemblyReference.cache

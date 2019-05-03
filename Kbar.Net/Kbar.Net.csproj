@@ -62,7 +62,7 @@
     <Compile Include="CalculatorWindow.xaml.cs">
       <DependentUpon>CalculatorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CommandList.cs" />
+    <Compile Include="CommandSuggestion.cs" />
     <Compile Include="CommandWindow.xaml.cs">
       <DependentUpon>CommandWindow.xaml</DependentUpon>
     </Compile>

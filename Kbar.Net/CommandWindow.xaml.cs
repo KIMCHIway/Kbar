@@ -19,118 +19,36 @@ namespace Kbar.Net
     /// </summary>
     public partial class CommandWindow : Window
     {
-        CommandList command = new CommandList();
-
         public CommandWindow()
         {
             InitializeComponent();
         }
 
 
-        public bool Load_RelatedCommand(string text) // Search Module name
+        public void Write_RelatedCommand(Dictionary<string, string> command) // Search Module name
         {
             // Initialize all TextBlock at every input
-            for (int count = 0; count < 5; count++)
+            for (int i = 0; i < 5; i++)
             {
-                TextBlock name = FindName("NameIndex" + count) as TextBlock;
+                TextBlock name = FindName("NameIndex" + i) as TextBlock;
                 name.Text = "";
-                TextBlock description = FindName("DescriptionIndex" + count) as TextBlock;
+                TextBlock description = FindName("DescriptionIndex" + i) as TextBlock;
                 description.Text = "";
             }
 
-            // Search
-            var matchingValue = from module in command.modules
-                                where module.Key.StartsWith(text)
-                                select module;
 
-
-            if (matchingValue.Count() > 0)
+            // Write on component
+            int index = 0; // TextBlock index variable
+            foreach (var value in command)
             {
-                int count = 0; // TextBlock index variable
-                foreach (var value in matchingValue)
-                {
-                    TextBlock name = FindName("NameIndex" + count) as TextBlock;
-                    name.Text = value.Key;
-                    TextBlock description = FindName("DescriptionIndex" + count) as TextBlock;
-                    description.Text = value.Value;
+                TextBlock name = FindName("NameIndex" + index) as TextBlock;
+                name.Text = value.Key;
+                TextBlock description = FindName("DescriptionIndex" + index) as TextBlock;
+                description.Text = value.Value;
 
-                    count++;
-                    if (count == 5) break; // only show 5 search result (0 ~ 4)
-                }
-
-                return true;
+                index++;
+                if (index == 5) break; // only show 5 search result (0 ~ 4)
             }
-            else // No Search result
-            {
-                return false;
-            }
-        }
-
-        public bool Load_RelatedCommand(string module, string text) // Search command
-        {
-            // Initialize all TextBlock at every input
-            for (int count = 0; count < 5; count++)
-            {
-                TextBlock name = FindName("NameIndex" + count) as TextBlock;
-                name.Text = "";
-                TextBlock description = FindName("DescriptionIndex" + count) as TextBlock;
-                description.Text = "";
-            }
-
-            // Search
-            Dictionary<string, string> matchingValue = null;
-            switch (module)
-            {
-                // Papago Module
-                case "papago":
-                case "nt":
-                case "ntranslation":
-                case "translation":
-                    matchingValue = (from command in command.papago
-                                    where command.Key.StartsWith(text)
-                                    select command).ToDictionary(i => i.Key, i => i.Value);
-                    break;
-
-                // Naver Dictionary Module
-                case "nd":
-                case "ndictionary":
-                case "dictionary":
-                    matchingValue = (from command in command.naverDictionary
-                                    where command.Key.StartsWith(text)
-                                    select command).ToDictionary(i => i.Key, i => i.Value);
-                    break;
-                case "go":
-                    matchingValue = (from command in command.go
-                                     where command.Key.StartsWith(text)
-                                     select command).ToDictionary(i => i.Key, i => i.Value);
-                    break;
-                // if there is no module name that is related
-                default:
-                    return false;
-            }
-
-            // Only (count of search result > 0)
-            if (matchingValue.Count() > 0)
-            {
-                int count = 0; // TextBlock index variable
-                foreach (var value in matchingValue)
-                {
-                    TextBlock name = FindName("NameIndex" + count) as TextBlock;
-                    name.Text = value.Key;
-                    TextBlock description = FindName("DescriptionIndex" + count) as TextBlock;
-                    description.Text = value.Value;
-
-                    count++;
-                    if (count == 5) break; // only show 5 search result (0 ~ 4)
-                }
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
         }
     }
 }

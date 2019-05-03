@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kbar.Net
 {
-    class CommandList
+    class CommandSuggestion
     {
         public IReadOnlyDictionary<string, string> modules = new Dictionary<string, string>()
         {
@@ -29,6 +29,7 @@ namespace Kbar.Net
             //
             {"calc", "Calculate formula with [+ - * / ( ) ]" },
             {"calculator", "Calculate formula with [+ - * / ( ) ]" }
+            //
             //{"wiki", "Wiki Pedia" },
             //
             //{"money", "Exchange Rate" },
@@ -96,5 +97,61 @@ namespace Kbar.Net
             {"dc", "Dcinside Main" },
             {"dcpr", "Dcinside Programming Gallery" }
         };
+
+
+        public Dictionary<string, string> Search_Command(string text)
+        {
+            // Search
+            Dictionary<string, string> matchingValue = (from module in modules
+                                                        where module.Key.StartsWith(text)
+                                                        select module).ToDictionary(i => i.Key, i => i.Value);
+
+            if (matchingValue.Count() > 0)
+            {
+                return matchingValue;
+            }
+            else return null;
+        }
+
+        public Dictionary<string, string> Search_Command(string module, string text)
+        {
+            // Search
+            Dictionary<string, string> matchingValue = null;
+            switch (module)
+            {
+                // Papago Module
+                case "papago":
+                case "nt":
+                case "ntranslation":
+                case "translation":
+                    matchingValue = (from command in papago
+                                     where command.Key.StartsWith(text)
+                                     select command).ToDictionary(i => i.Key, i => i.Value);
+                    break;
+
+                // Naver Dictionary Module
+                case "nd":
+                case "ndictionary":
+                case "dictionary":
+                    matchingValue = (from command in naverDictionary
+                                     where command.Key.StartsWith(text)
+                                     select command).ToDictionary(i => i.Key, i => i.Value);
+                    break;
+                case "go":
+                    matchingValue = (from command in go
+                                     where command.Key.StartsWith(text)
+                                     select command).ToDictionary(i => i.Key, i => i.Value);
+                    break;
+                // if there is no module name that is related
+                default:
+                    return null;
+            }
+
+            if (matchingValue.Count() > 0)
+            {
+                return matchingValue;
+            }
+            else return null;
+        }
     }
 }

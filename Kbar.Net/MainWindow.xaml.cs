@@ -159,53 +159,49 @@ namespace Kbar.Net
         {
             // Close sub form which is showed
             if (cur_SubWindow != null) Close_SubWindow();
-            if (cur_CommandWindow == null)
-            {
-                CommandWindow commandWindow = new CommandWindow();
-                Load_SecondWindow(commandWindow);
 
-                cur_CommandWindow = commandWindow;
-
-                Activate();
-            }
 
             string[] command = CommandBox.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            
-            if (command.Length == 1) // INPUT module
+            if (command.Length == 1) // Input module name
             {
-                // Close and return when there is no input
-                if (string.IsNullOrEmpty(command[0]))
-                {
-                    Close_CommandWindow();
-                    return;
-                }
+                CommandSuggestion commandSuggestion = new CommandSuggestion();
 
-                // Close if there is no search result
-                if (cur_CommandWindow.Load_RelatedCommand(command[0].ToLower()) == false)
-                {
-                    Close_CommandWindow();
-                }
+                var result = commandSuggestion.Search_Command(command[0]);
+
+                Load_CommandWindow(result);
             }
-            else if (command.Length > 1 )// INPUT command of module
+            else if (command.Length > 1 ) // input module command
             {
+                CommandSuggestion commandSuggestion = new CommandSuggestion();
+
                 int index = command.Length - 1; // index = length - 1
+                var result = commandSuggestion.Search_Command(command[0], command[index]);
 
-                if (string.IsNullOrEmpty(command[index]))
-                {
-                    Close_CommandWindow();
-                    return;
-                }
-
-                if (cur_CommandWindow.Load_RelatedCommand(command[0].ToLower(), command[index]) == false)
-                {
-                    Close_CommandWindow();
-                }
+                Load_CommandWindow(result);
             }
             else if (command.Length > 3) // Max count of Command is 3, No need to Search for user input
             {
                 return;
             }
             
+        }
+
+        private void Load_CommandWindow(dynamic result)
+        {
+            if (result != null)
+            {
+                if (cur_CommandWindow == null)
+                {
+                    CommandWindow commandWindow = new CommandWindow();
+                    Load_SecondWindow(commandWindow);
+
+                    cur_CommandWindow = commandWindow;
+                }
+
+                cur_CommandWindow.Write_RelatedCommand(result);
+
+                Activate();
+            }
         }
 		
 		private void CommandMethod()
@@ -363,6 +359,14 @@ namespace Kbar.Net
             isTurn = true;
         }
 
+        private void ClosingMethod()
+        {
+            Hide_MainWindow();
+
+            Close_SubWindow();
+            Close_CommandWindow();
+        }
+
         private void Hide_MainWindow()
         {
             // Clear input box
@@ -370,14 +374,6 @@ namespace Kbar.Net
 
             Visibility = Visibility.Hidden;
             isTurn = false;
-        }
-
-        private void ClosingMethod()
-        {
-            Hide_MainWindow();
-
-            Close_SubWindow();
-            Close_CommandWindow();
         }
 
         public void Close_CommandWindow()
