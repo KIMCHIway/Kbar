@@ -8,7 +8,7 @@
         Title="PapagoWindow" Height="379" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" MouseDown="Grid_MouseDown">
     <Grid Loaded="Grid_Loaded" Width="662" Height="379">
         <Grid.Background>
-            <ImageBrush ImageSource="SubForm.png"/>
+            <ImageBrush ImageSource="Resources/SubForm.png"/>
         </Grid.Background>
         <Label Content="Papago" Margin="65,105,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" FontFamily="Core Gothic D 7 ExtraBold" Foreground="#FF39E2A4" HorizontalAlignment="Left" RenderTransformOrigin="0.322,0.462"/>
         <TextBlock x:Name="Text_sCode" Text="ko" HorizontalAlignment="Left" Margin="65,170,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Black" FontFamily="Core Gothic D 5 Medium"/>

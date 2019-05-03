@@ -46,6 +46,7 @@ namespace Kbar.Net
 
             _listener.HookKeyboard();
 
+            // Set tray feature
             try
             {
                 System.Windows.Forms.ContextMenu menu = new System.Windows.Forms.ContextMenu();

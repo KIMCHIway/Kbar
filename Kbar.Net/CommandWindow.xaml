@@ -11,7 +11,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="SubForm.png"/>
+            <ImageBrush ImageSource="Resources/SubForm.png"/>
         </Grid.Background>
         <TextBlock x:Name="NameIndex0" Text="" HorizontalAlignment="Left" Margin="65,105,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>
         <TextBlock x:Name="NameIndex1" Text="" HorizontalAlignment="Left" Margin="65,152,0,0" VerticalAlignment="Top" FontFamily="Core Gothic D 6 Bold" FontSize="20" FontWeight="Bold" Foreground="Black"/>

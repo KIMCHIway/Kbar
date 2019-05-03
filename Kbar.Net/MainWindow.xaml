@@ -7,7 +7,7 @@
         Title="MainWindow" Height="167" Width="662" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" WindowStartupLocation="CenterScreen">
     <Grid Loaded="Grid_Loaded" Width="662" Height="162" Margin="0,0,0,5">
         <Grid.Background>
-            <ImageBrush ImageSource="BarForm.png"/>
+            <ImageBrush ImageSource="Resources/BarForm.png"/>
         </Grid.Background>
         <Label x:Name="label1" HorizontalAlignment="Left" Margin="102,32,0,0" VerticalAlignment="Top" Width="286"/>
         <TextBox x:Name="CommandBox" HorizontalAlignment="Left" Height="42" Margin="108,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="28" TextChanged="CommandBox_TextChanged" FontFamily="Core Gothic D 7 ExtraBold" VerticalContentAlignment="Center" BorderThickness="0"/>

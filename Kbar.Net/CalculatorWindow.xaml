@@ -8,7 +8,7 @@
         Title="CalculatorWindow" Height="379" Width="662" AllowsTransparency="True" Background="{x:Null}" Foreground="{x:Null}" WindowStyle="None" MouseDown="Window_MouseDown">
     <Grid Height="379" Width="662" Margin="-4" Loaded="Grid_Loaded">
         <Grid.Background>
-            <ImageBrush ImageSource="SubForm.png"/>
+            <ImageBrush ImageSource="Resources/SubForm.png"/>
         </Grid.Background>
         <Label Content="Calculator" Margin="65,105,0,0" VerticalAlignment="Top" FontSize="30" VerticalContentAlignment="Center" FontFamily="Core Gothic D 7 ExtraBold" Foreground="#FF39E2A4" HorizontalAlignment="Left" RenderTransformOrigin="0.322,0.462"/>
         <Label x:Name="Button_Close" Content="Close" Margin="102,298,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Core Gothic D 6 Bold" Foreground="#FF39E2A4" Height="39" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="168" MouseLeftButtonDown="Button_Close_MouseLeftButtonDown"/>
