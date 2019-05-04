@@ -35,7 +35,7 @@ namespace Kbar.Net
 
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            mainWindow.Close_SubWindow();
         }
 
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

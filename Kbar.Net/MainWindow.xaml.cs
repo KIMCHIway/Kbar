@@ -21,6 +21,8 @@ using MessageBox = System.Windows.Forms.MessageBox;
 // Kbar command docs : https://docs.google.com/document/d/1-0STF1GnlQi-IYj8PNtPBaO657w1jOwlGT1H6X81nZw/edit?usp=sharing
 // Code of GUI MainWindows.xaml 
 
+// MessageBox.Show("Y", "Sys");
+
 namespace Kbar.Net
 {
 	
@@ -33,12 +35,14 @@ namespace Kbar.Net
         // To delete the sub window which is turn on
         private dynamic cur_SubWindow;
         private dynamic cur_CommandWindow;
+        private dynamic cur_EdgeWindow;
         // To seperate what to do when F8 is pressed
-        private bool isTurn; 
+        private bool isTurn;
+        // To check if focus is on inputBox on Main window
+        public bool isFocus = true;
 
         public MainWindow()
         {
-            MessageBox.Show("Init", "System");
             InitializeComponent();
 			
 			// Code for hook key
@@ -63,8 +67,8 @@ namespace Kbar.Net
                 item1.Text = "Help";
                 item1.Click += delegate (object click, EventArgs eClick)
                 {
-                    HelpWindow helpWindow = new HelpWindow();
-                    helpWindow.Show();
+                    HelpWindow helpWindow = new HelpWindow(this);
+                    Load_EdgeWindow(helpWindow);
                 };
 
                 item2.Index = 1;
@@ -111,16 +115,15 @@ namespace Kbar.Net
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + "\r Report to https://github.com/KIMCHIway/Kbar", "101 ERROR CODE [2]");
+                MessageBox.Show(e.Message + "\r Report with Error code in https://github.com/KIMCHIway/Kbar", "101 ERROR CODE");
             }
         }
-		
-		private void Grid_Loaded(object sender, RoutedEventArgs e)
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             ShowInTaskbar = false;
             Topmost = true;
-
-            InputBox.Focusable = true;
+            InputBox.Focus();
 
             Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
             Visibility = Visibility.Hidden;
@@ -151,10 +154,15 @@ namespace Kbar.Net
 
 
             // Hotkey for command
-            if (e.KeyPressed.ToString() == "Return")
+            if (e.KeyPressed.ToString() == "Return" && isFocus == true)
             {
                 CommandMethod();
             }
+        }
+
+        private void InputBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isFocus = true;
         }
 
         private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -216,139 +224,146 @@ namespace Kbar.Net
             // Don't do ToLower() here for user input (Not command)
             string[] command = InputBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            if (command.Length > 1) // Check command only when format is right
+            string module = command[0];
+            switch (module.ToLower())
             {
-                string module = command[0];
-                switch (module.ToLower())
-                {
-                    // Go Module
-                    case "go":
-                        if (command.Length >= 2)
-                        {
-                            Go go = new Go();
-                            go.Call_Go(command[1]);
+                // Go Module
+                case "go":
+                    if (command.Length >= 2)
+                    {
+                        Go go = new Go();
+                        go.Call_Go(command[1]);
 
-                            ClosingMethod();
+                        ClosingMethod();
+                    }
+
+                    break;
+
+                // Papago Module
+                case "papago":
+                case "nt":
+                case "ntranslation":
+                case "translation":
+
+
+                    if (command.Length >= 4)
+                    {
+                        // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
+                        string sourceText = string.Empty;
+                        for (int i = 3; i < command.Length; i++)
+                        {
+                            sourceText += command[i] + " ";
                         }
 
-                        break;
-
-                    // Papago Module
-                    case "papago":
-                    case "nt":
-                    case "ntranslation":
-                    case "translation":
+                        // Call Papago API
+                        Papago papago = new Papago();
+                        string targetText = papago.Call_Papago(command[1], command[2], sourceText);
 
 
-                        if (command.Length >= 4)
+                        // Set window component
+                        PapagoWindow papagoWindow = new PapagoWindow(this);
+                        Load_SecondWindow(papagoWindow);
+
+                        cur_SubWindow = papagoWindow;
+
+                        Activate();
+
+                        papagoWindow.Text_sCode.Text = command[1];
+                        papagoWindow.Text_tCode.Text = command[2];
+                        papagoWindow.Text_sText.Text = sourceText;
+                        papagoWindow.Text_tText.Text = targetText;
+                    }
+
+                    break;
+
+                // Naver Dictionary Module
+                case "nd":
+                case "ndictionary":
+                case "dictionary":
+                    if (command.Length >= 3)
+                    {
+                        string[] textArray = new string[command.Length - 2]; // nd code text1 text2 -> need (length - 2)
+                        Array.Copy(command, 2, textArray, 0, textArray.Length); // source array, source start index, target array, target start indext, count
+
+                        // Use Go Module
+                        Go go = new Go();
+                        go.Call_NaverDictionary(command[1], textArray);
+
+                        ClosingMethod();
+                    }
+
+                    break;
+
+                // Naver Map Module
+                case "nm":
+                case "nmap":
+                    if (command.Length >= 2)
+                    {
+                        string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                        Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
+
+                        // Use Go Module
+                        Go go = new Go();
+                        go.Call_NaverMap(locationArray);
+
+                        ClosingMethod();
+                    }
+
+                    break;
+
+                // Google Map Module
+                case "gm":
+                case "gmap":
+                case "map":
+                    if (command.Length >= 2)
+                    {
+                        string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                        Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
+
+                        // Use Go Module
+                        Go go = new Go();
+                        go.Call_GoogleMap(locationArray);
+
+                        ClosingMethod();
+                    }
+
+                    break;
+                // Calculator Module
+                case "calc":
+                case "calculator":
+                    if (command.Length >= 2)
+                    {
+                        // Combine seperated formula
+                        string formula = string.Empty;
+                        for (int i = 1; i < command.Length; i++)
                         {
-                            // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
-                            string sourceText = string.Empty;
-                            for (int i = 3; i < command.Length; i++)
-                            {
-                                sourceText += command[i] + " ";
-                            }
-
-                            // Call Papago API
-                            Papago papago = new Papago();
-                            string targetText = papago.Call_Papago(command[1], command[2], sourceText);
-
-
-                            // Set window component
-                            PapagoWindow papagoWindow = new PapagoWindow(this);
-                            Load_SecondWindow(papagoWindow);
-
-                            cur_SubWindow = papagoWindow;
-
-                            Activate();
-
-                            papagoWindow.Text_sCode.Text = command[1];
-                            papagoWindow.Text_tCode.Text = command[2];
-                            papagoWindow.Text_sText.Text = sourceText;
-                            papagoWindow.Text_tText.Text = targetText;
+                            formula += command[i];
                         }
 
-                        break;
+                        Calculator clac = new Calculator();
+                        string result = clac.clac(formula);
 
-                    // Naver Dictionary Module
-                    case "nd":
-                    case "ndictionary":
-                    case "dictionary":
-                        if (command.Length >= 3)
-                        {
-                            string[] textArray = new string[command.Length - 2]; // nd code text1 text2 -> need (length - 2)
-                            Array.Copy(command, 2, textArray, 0, textArray.Length); // source array, source start index, target array, target start indext, count
+                        CalculatorWindow calcWindow = new CalculatorWindow(this);
+                        Load_SecondWindow(calcWindow);
 
-                            // Use Go Module
-                            Go go = new Go();
-                            go.Call_NaverDictionary(command[1], textArray);
+                        cur_SubWindow = calcWindow;
 
-                            ClosingMethod();
-                        }
+                        Activate();
 
-                        break;
+                        calcWindow.Text_Formula.Text = formula;
+                        calcWindow.Text_Result.Text = result;
+                    }
+                    break;
+                // Notepad Module
+                case "notepad":
+                case "note":
 
-                    // Naver Map Module
-                    case "nm":
-                    case "nmap":
-                        if (command.Length >= 2)
-                        {
-                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
+                    NotepadWindow noteWindow = new NotepadWindow(this);
+                    Load_EdgeWindow(noteWindow);
 
-                            // Use Go Module
-                            Go go = new Go();
-                            go.Call_NaverMap(locationArray);
+                    ClosingMethod();
 
-                            ClosingMethod();
-                        }
-
-                        break;
-
-                    // Google Map Module
-                    case "gm":
-                    case "gmap":
-                    case "map":
-                        if (command.Length >= 2)
-                        {
-                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
-
-                            // Use Go Module
-                            Go go = new Go();
-                            go.Call_GoogleMap(locationArray);
-
-                            ClosingMethod();
-                        }
-
-                        break;
-                    // Calculator Module
-                    case "calc":
-                    case "calculator":
-                        if (command.Length >= 2)
-                        {
-                            // Combine seperated formula
-                            string formula = string.Empty;
-                            for (int i = 1; i < command.Length; i++)
-                            {
-                                formula += command[i];
-                            }
-
-                            Calculator clac = new Calculator();
-                            string result = clac.clac(formula);
-
-                            CalculatorWindow calcWindow = new CalculatorWindow(this);
-                            Load_SecondWindow(calcWindow);
-
-                            cur_SubWindow = calcWindow;
-
-                            Activate();
-
-                            calcWindow.Text_Formula.Text = formula;
-                            calcWindow.Text_Result.Text = result;
-                        }
-                        break;
-                }
+                    break;
             }
         }
 
@@ -393,11 +408,33 @@ namespace Kbar.Net
             }
         }
 
+        public void Close_EdgeWindow()
+        {
+            if (cur_EdgeWindow != null)
+            {
+                cur_EdgeWindow.Close();
+                cur_EdgeWindow = null;
+            }
+        }
+
         private void Load_SecondWindow(dynamic window)
         {
             window.Show();
             window.Left = Left;
             window.Top = Top + Height / 3 - 21;
+        }
+
+        private void Load_EdgeWindow(dynamic window)
+        {
+            Close_EdgeWindow();
+
+            window.Show();
+
+            var desktopWorkingArea = SystemParameters.WorkArea;
+            window.Left = desktopWorkingArea.Right - Width;
+            window.Top = desktopWorkingArea.Bottom - Height;
+
+            cur_EdgeWindow = window;
         }
 
         //private void Grid_Closing(object sender, System.ComponentModel.CancelEventArgs e)

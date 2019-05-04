@@ -28,7 +28,10 @@ namespace Kbar.Net
             {"go", "Connect Website directly" },
             //
             {"calc", "Calculate formula with [+ - * / ( ) ]" },
-            {"calculator", "Calculate formula with [+ - * / ( ) ]" }
+            {"calculator", "Calculate formula with [+ - * / ( ) ]" },
+            //
+            {"notepad", "Local Notepad" },
+            {"note", "Local Notepad" }
             //
             //{"wiki", "Wiki Pedia" },
             //
@@ -38,8 +41,6 @@ namespace Kbar.Net
             //{"weather", "World Weather" },
             //
             //{"time", "World Time" },
-            //
-            //{"note", "Notepad" },
         };
 
         public IReadOnlyDictionary<string, string> papago = new Dictionary<string, string>()

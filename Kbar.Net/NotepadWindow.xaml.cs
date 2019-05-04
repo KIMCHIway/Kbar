@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,19 +32,39 @@ namespace Kbar.Net
         {
             ShowInTaskbar = false;
             Topmost = true;
+            InputBox.Focus();
 
             // Load saved file
-
+            try
+            {
+                string text = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "notepad.txt");
+                InputBox.Text = text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\r Report with Error code in https://github.com/KIMCHIway/Kbar", "201 ERROR CODE");
+            }
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void InputBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            mainWindow.Focus();
+            mainWindow.isFocus = false;
         }
 
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
+                StreamWriter writer = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "notepad.txt");
+                writer.Write(InputBox.Text);
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\r Report with Error code in https://github.com/KIMCHIway/Kbar", "202 ERROR CODE");
+            }
 
+            Close();
         }
 
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -19,17 +19,17 @@ namespace Kbar.Net
     /// </summary>
     public partial class HelpWindow : Window
     {
-        public HelpWindow()
+        MainWindow mainWindow;
+
+        public HelpWindow(dynamic window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            var desktopWorkingArea = SystemParameters.WorkArea;
-            Left = desktopWorkingArea.Right - Width;
-            Top = desktopWorkingArea.Bottom - Height;
-
+            ShowInTaskbar = false;
             Topmost = true;
         }
 
@@ -41,7 +41,7 @@ namespace Kbar.Net
 
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            mainWindow.Close_EdgeWindow();
         }
     }
 }
