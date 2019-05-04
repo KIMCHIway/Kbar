@@ -1,6 +1,6 @@
 Kbar
 ======
-Qhick Tool Bar
+Quick Tool Bar
 ------
 Quick search bar for Window user by way of Kimchi.
 
