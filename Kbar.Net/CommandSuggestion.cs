@@ -83,16 +83,24 @@ namespace Kbar.Net
 
         public IReadOnlyDictionary<string, string> go = new Dictionary<string, string>()
         {
-            {"facebook", "Facebook" },
+            {"git", "Github" },
             {"g", "Google Main" },
+            {"github", "Github" },
             {"google", "Google Main" },
+            {"docs", "Google Docs" },
+            {"sheet", "Google Spreadsheet" },
+            {"ppt", "Google Presentation" },
             {"youtube", "Youtube" },
+            {"facebook", "Facebook" },
             {"n", "Naver Main" },
             {"naver", "Naver Main" },
             {"nd", "Naver Dictionary Home" },
             {"papago", "Naver NMT Translator" },
-            {"ntranslation", "Naver NMT Translator" },
+            {"ntranslator", "Naver NMT Translator" },
+            {"nm", "Naver Map" },
             {"nmap", "Naver Map" },
+            {"gm", "Google Map" },
+            {"gmap", "Google Map" },
             {"daum", "Daum Main" },
             {"dc", "Dcinside Main" },
             {"dcpr", "Dcinside Programming Gallery" }

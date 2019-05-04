@@ -13,15 +13,32 @@ namespace Kbar.Net
         {
             switch (site.ToLower())
             {
-                case "facebook":
-                    Connect_Chrome("https://www.facebook.com");
+                case "github":
+                case "git":
+                    Connect_Chrome("https://github.com/");
                     break;
-                case "g":
                 case "google":
+                case "g":
                     Connect_Chrome("https://www.google.com");
+                    break;
+                case "gm":
+                case "gmap":
+                    Connect_Chrome("https://www.google.com/maps/");
+                    break;
+                case "docs":
+                    Connect_Chrome("https://docs.google.com/document/u/1/");
+                    break;
+                case "sheet":
+                    Connect_Chrome("https://docs.google.com/spreadsheets/u/0/");
+                    break;
+                case "ppt":
+                    Connect_Chrome("https://docs.google.com/presentation/u/0/");
                     break;
                 case "youtube":
                     Connect_Chrome("https://www.youtube.com");
+                    break;
+                case "facebook":
+                    Connect_Chrome("https://www.facebook.com");
                     break;
                 // NAVER
                 case "n":
