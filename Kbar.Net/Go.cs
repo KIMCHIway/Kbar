@@ -67,6 +67,9 @@ namespace Kbar.Net
                 case "dcpr":
                     Connect_Chrome("https://gall.dcinside.com/board/lists/?id=programming");
                     break;
+                case "pooq":
+                    Connect_Chrome("https://www.pooq.co.kr/");
+                    break;
             }
         }
 

@@ -431,8 +431,8 @@ namespace Kbar.Net
             window.Show();
 
             var desktopWorkingArea = SystemParameters.WorkArea;
-            window.Left = desktopWorkingArea.Right - Width;
-            window.Top = desktopWorkingArea.Bottom - Height;
+            window.Left = desktopWorkingArea.Right - window.Width;
+            window.Top = desktopWorkingArea.Bottom - window.Height;
 
             cur_EdgeWindow = window;
         }

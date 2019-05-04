@@ -104,7 +104,8 @@ namespace Kbar.Net
             {"gmap", "Google Map" },
             {"daum", "Daum Main" },
             {"dc", "Dcinside Main" },
-            {"dcpr", "Dcinside Programming Gallery" }
+            {"dcpr", "Dcinside Programming Gallery" },
+            {"pooq", "Tv Streaming" }
         };
 
 
