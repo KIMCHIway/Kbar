@@ -19,17 +19,12 @@ namespace Kbar.Net
     /// </summary>
     public partial class PapagoWindow : Window
     {
-        MainWindow mainWindow = new MainWindow();
+        MainWindow mainWindow;
 
-        //public PapagoWindow(dynamic window)
-        //{
-        //    InitializeComponent();
-        //    mainWindow = window;
-        //}
-
-        public PapagoWindow()
+        public PapagoWindow(dynamic window)
         {
             InitializeComponent();
+            mainWindow = window;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)

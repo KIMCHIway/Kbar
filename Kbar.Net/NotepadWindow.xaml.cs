@@ -19,7 +19,7 @@ namespace Kbar.Net
     /// </summary>
     public partial class NotepadWindow : Window
     {
-        MainWindow mainWindow = new MainWindow();
+        MainWindow mainWindow;
 
         public NotepadWindow(dynamic window)
         {

@@ -209,8 +209,8 @@ namespace Kbar.Net
 		private void CommandMethod()
 		{
             // Close Second Window which is showed
-            if (cur_SubWindow != null) Close_SubWindow();
-            if (cur_CommandWindow != null) Close_CommandWindow();
+            Close_SubWindow();
+            Close_CommandWindow();
 
             // Split by blank (0 is Command)
             // Don't do ToLower() here for user input (Not command)
@@ -238,6 +238,8 @@ namespace Kbar.Net
                     case "nt":
                     case "ntranslation":
                     case "translation":
+
+
                         if (command.Length >= 4)
                         {
                             // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
@@ -253,7 +255,7 @@ namespace Kbar.Net
 
 
                             // Set window component
-                            PapagoWindow papagoWindow = new PapagoWindow();
+                            PapagoWindow papagoWindow = new PapagoWindow(this);
                             Load_SecondWindow(papagoWindow);
 
                             cur_SubWindow = papagoWindow;
@@ -347,11 +349,6 @@ namespace Kbar.Net
                         }
                         break;
                 }
-            }
-            else if (command.Length == 0)
-            {
-                // if Sub Windows is showed, intialize state variable
-                Close_SubWindow();
             }
         }
 

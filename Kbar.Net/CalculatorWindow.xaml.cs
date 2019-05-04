@@ -19,7 +19,7 @@ namespace Kbar.Net
     /// </summary>
     public partial class CalculatorWindow : Window
     {
-        MainWindow mainWindow = new MainWindow();
+        MainWindow mainWindow;
 
         public CalculatorWindow(dynamic window)
         {
