@@ -12,8 +12,8 @@ namespace Kbar.Net
         {
             {"papago", "Use Naver NMT Translator"},
             {"nt", "Use Naver NMT Translator" },
-            {"ntranslation", "Use Naver NMT Translator" },
-            {"translation", "Use Naver NMT Translator" },
+            {"ntranslator", "Use Naver NMT Translator" },
+            {"translator", "Use Naver NMT Translator" },
             //
             {"gt", "Use Google SMT Translator" },
             {"gtranslation", "Use Google SMT Translator" },

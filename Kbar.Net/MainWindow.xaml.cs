@@ -147,14 +147,14 @@ namespace Kbar.Net
                 }
             }
 
-            if (e.KeyPressed.ToString() == "Escape")
+            if (e.KeyPressed.ToString() == "Escape" && isTurn == true)
             {
                 ClosingMethod();
             }
 
 
             // Hotkey for command
-            if (e.KeyPressed.ToString() == "Return" && isFocus == true)
+            if (e.KeyPressed.ToString() == "Return" && isTurn == true && isFocus == true)
             {
                 CommandMethod();
             }
@@ -242,8 +242,8 @@ namespace Kbar.Net
                 // Papago Module
                 case "papago":
                 case "nt":
-                case "ntranslation":
-                case "translation":
+                case "ntranslator":
+                case "translator":
 
 
                     if (command.Length >= 4)
