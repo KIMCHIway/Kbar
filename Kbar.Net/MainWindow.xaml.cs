@@ -38,6 +38,7 @@ namespace Kbar.Net
 
         public MainWindow()
         {
+            MessageBox.Show("Init", "System");
             InitializeComponent();
 			
 			// Code for hook key
@@ -119,7 +120,7 @@ namespace Kbar.Net
             ShowInTaskbar = false;
             Topmost = true;
 
-            CommandBox.Focusable = true;
+            InputBox.Focusable = true;
 
             Top = (SystemParameters.PrimaryScreenHeight / 6) - (Height / 2);
             Visibility = Visibility.Hidden;
@@ -139,7 +140,7 @@ namespace Kbar.Net
                     Display_MainWindow();
 
                     // Focus on TextBox when it turns on
-                    CommandBox.Focus();
+                    InputBox.Focus();
                 }
             }
 
@@ -156,13 +157,13 @@ namespace Kbar.Net
             }
         }
 
-        private void CommandBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             // Close sub form which is showed
             if (cur_SubWindow != null) Close_SubWindow();
 
 
-            string[] command = CommandBox.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] command = InputBox.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             if (command.Length == 1) // Input module name
             {
                 CommandSuggestion commandSuggestion = new CommandSuggestion();
@@ -213,7 +214,7 @@ namespace Kbar.Net
 
             // Split by blank (0 is Command)
             // Don't do ToLower() here for user input (Not command)
-            string[] command = CommandBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+            string[] command = InputBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
             if (command.Length > 1) // Check command only when format is right
             {
@@ -252,7 +253,7 @@ namespace Kbar.Net
 
 
                             // Set window component
-                            PapagoWindow papagoWindow = new PapagoWindow(this);
+                            PapagoWindow papagoWindow = new PapagoWindow();
                             Load_SecondWindow(papagoWindow);
 
                             cur_SubWindow = papagoWindow;
@@ -371,7 +372,7 @@ namespace Kbar.Net
         private void Hide_MainWindow()
         {
             // Clear input box
-            CommandBox.Text = string.Empty;
+            InputBox.Text = string.Empty;
 
             Visibility = Visibility.Hidden;
             isTurn = false;

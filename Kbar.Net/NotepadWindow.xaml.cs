@@ -19,9 +19,36 @@ namespace Kbar.Net
     /// </summary>
     public partial class NotepadWindow : Window
     {
-        public NotepadWindow()
+        MainWindow mainWindow = new MainWindow();
+
+        public NotepadWindow(dynamic window)
         {
             InitializeComponent();
+            mainWindow = window;
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            ShowInTaskbar = false;
+            Topmost = true;
+
+            // Load saved file
+
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.Focus();
+        }
+
+        private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(InputBox.Text);
         }
     }
 }

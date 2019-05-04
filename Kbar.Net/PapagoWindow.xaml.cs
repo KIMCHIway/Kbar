@@ -21,16 +21,26 @@ namespace Kbar.Net
     {
         MainWindow mainWindow = new MainWindow();
 
-        public PapagoWindow(dynamic window)
+        //public PapagoWindow(dynamic window)
+        //{
+        //    InitializeComponent();
+        //    mainWindow = window;
+        //}
+
+        public PapagoWindow()
         {
             InitializeComponent();
-            mainWindow = window;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             ShowInTaskbar = false;
             Topmost = true;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.Focus();
         }
 
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,11 +51,6 @@ namespace Kbar.Net
         private void Button_Copy_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Clipboard.SetText(Text_tText.Text);
-        }
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            mainWindow.Focus();
         }
     }
 }
