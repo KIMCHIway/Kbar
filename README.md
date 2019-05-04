@@ -1,12 +1,12 @@
 Kbar
 ======
-Qhick Tool Bar
+Quick Tool Bar
 ------
 Quick search bar for Window user by way of Kimchi.
 
 It is made for rapid computer using as soon as possible. **[Low Mouse Using]**
 
-![alt text](https://github.com/KIMCHIway/README-Resource-Container/blob/master/ezgif.com-crop.gif)
+![alt text](https://github.com/KIMCHIway/Github-Resource-Container/blob/master/toolbar-1.gif)
 
 Docs
 ------
