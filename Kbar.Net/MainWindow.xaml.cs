@@ -426,9 +426,8 @@ namespace Kbar.Net
 
             window.Show();
 
-            var desktopWorkingArea = SystemParameters.WorkArea;
-            window.Left = desktopWorkingArea.Right - window.Width;
-            window.Top = desktopWorkingArea.Bottom - window.Height;
+            window.Left = SystemParameters.PrimaryScreenWidth - window.Width;
+            window.Top = SystemParameters.PrimaryScreenHeight - window.Height;
 
             cur_EdgeWindow = window;
         }
