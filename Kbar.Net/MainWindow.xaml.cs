@@ -38,8 +38,6 @@ namespace Kbar.Net
         private dynamic cur_EdgeWindow;
         // To seperate what to do when F8 is pressed
         private bool isTurn;
-        // To check if focus is on inputBox on Main window
-        public bool isFocus = true;
 
         public MainWindow()
         {
@@ -154,15 +152,10 @@ namespace Kbar.Net
 
 
             // Hotkey for command
-            if (e.KeyPressed.ToString() == "Return" && isTurn == true && isFocus == true)
+            if (e.KeyPressed.ToString() == "Return" && isTurn == true)
             {
                 CommandMethod();
             }
-        }
-
-        private void InputBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            isFocus = true;
         }
 
         private void InputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -224,146 +217,149 @@ namespace Kbar.Net
             // Don't do ToLower() here for user input (Not command)
             string[] command = InputBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            string module = command[0];
-            switch (module.ToLower())
+            if (command.Length > 0)
             {
-                // Go Module
-                case "go":
-                    if (command.Length >= 2)
-                    {
-                        Go go = new Go();
-                        go.Call_Go(command[1]);
-
-                        ClosingMethod();
-                    }
-
-                    break;
-
-                // Papago Module
-                case "papago":
-                case "nt":
-                case "ntranslator":
-                case "translator":
-
-
-                    if (command.Length >= 4)
-                    {
-                        // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
-                        string sourceText = string.Empty;
-                        for (int i = 3; i < command.Length; i++)
+                string module = command[0];
+                switch (module.ToLower())
+                {
+                    // Go Module
+                    case "go":
+                        if (command.Length >= 2)
                         {
-                            sourceText += command[i] + " ";
+                            Go go = new Go();
+                            go.Call_Go(command[1]);
+
+                            ClosingMethod();
                         }
 
-                        // Call Papago API
-                        Papago papago = new Papago();
-                        string targetText = papago.Call_Papago(command[1], command[2], sourceText);
+                        break;
+
+                    // Papago Module
+                    case "papago":
+                    case "nt":
+                    case "ntranslator":
+                    case "translator":
 
 
-                        // Set window component
-                        PapagoWindow papagoWindow = new PapagoWindow(this);
-                        Load_SecondWindow(papagoWindow);
-
-                        cur_SubWindow = papagoWindow;
-
-                        Activate();
-
-                        papagoWindow.Text_sCode.Text = command[1];
-                        papagoWindow.Text_tCode.Text = command[2];
-                        papagoWindow.Text_sText.Text = sourceText;
-                        papagoWindow.Text_tText.Text = targetText;
-                    }
-
-                    break;
-
-                // Naver Dictionary Module
-                case "nd":
-                case "ndictionary":
-                case "dictionary":
-                    if (command.Length >= 3)
-                    {
-                        string[] textArray = new string[command.Length - 2]; // nd code text1 text2 -> need (length - 2)
-                        Array.Copy(command, 2, textArray, 0, textArray.Length); // source array, source start index, target array, target start indext, count
-
-                        // Use Go Module
-                        Go go = new Go();
-                        go.Call_NaverDictionary(command[1], textArray);
-
-                        ClosingMethod();
-                    }
-
-                    break;
-
-                // Naver Map Module
-                case "nm":
-                case "nmap":
-                    if (command.Length >= 2)
-                    {
-                        string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                        Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
-
-                        // Use Go Module
-                        Go go = new Go();
-                        go.Call_NaverMap(locationArray);
-
-                        ClosingMethod();
-                    }
-
-                    break;
-
-                // Google Map Module
-                case "gm":
-                case "gmap":
-                case "map":
-                    if (command.Length >= 2)
-                    {
-                        string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
-                        Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
-
-                        // Use Go Module
-                        Go go = new Go();
-                        go.Call_GoogleMap(locationArray);
-
-                        ClosingMethod();
-                    }
-
-                    break;
-                // Calculator Module
-                case "calc":
-                case "calculator":
-                    if (command.Length >= 2)
-                    {
-                        // Combine seperated formula
-                        string formula = string.Empty;
-                        for (int i = 1; i < command.Length; i++)
+                        if (command.Length >= 4)
                         {
-                            formula += command[i];
+                            // Combine seperated source text (INDEX 0:papago 1:en 2:ko 3:text1 4:text2 ~
+                            string sourceText = string.Empty;
+                            for (int i = 3; i < command.Length; i++)
+                            {
+                                sourceText += command[i] + " ";
+                            }
+
+                            // Call Papago API
+                            Papago papago = new Papago();
+                            string targetText = papago.Call_Papago(command[1], command[2], sourceText);
+
+
+                            // Set window component
+                            PapagoWindow papagoWindow = new PapagoWindow(this);
+                            Load_SecondWindow(papagoWindow);
+
+                            cur_SubWindow = papagoWindow;
+
+                            Activate();
+
+                            papagoWindow.Text_sCode.Text = command[1];
+                            papagoWindow.Text_tCode.Text = command[2];
+                            papagoWindow.Text_sText.Text = sourceText;
+                            papagoWindow.Text_tText.Text = targetText;
                         }
 
-                        Calculator clac = new Calculator();
-                        string result = clac.clac(formula);
+                        break;
 
-                        CalculatorWindow calcWindow = new CalculatorWindow(this);
-                        Load_SecondWindow(calcWindow);
+                    // Naver Dictionary Module
+                    case "nd":
+                    case "ndictionary":
+                    case "dictionary":
+                        if (command.Length >= 3)
+                        {
+                            string[] textArray = new string[command.Length - 2]; // nd code text1 text2 -> need (length - 2)
+                            Array.Copy(command, 2, textArray, 0, textArray.Length); // source array, source start index, target array, target start indext, count
 
-                        cur_SubWindow = calcWindow;
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_NaverDictionary(command[1], textArray);
 
-                        Activate();
+                            ClosingMethod();
+                        }
 
-                        calcWindow.Text_Formula.Text = formula;
-                        calcWindow.Text_Result.Text = result;
-                    }
-                    break;
-                // Notepad Module
-                case "notepad":
-                case "note":
+                        break;
 
-                    NotepadWindow noteWindow = new NotepadWindow(this);
-                    Load_EdgeWindow(noteWindow);
+                    // Naver Map Module
+                    case "nm":
+                    case "nmap":
+                        if (command.Length >= 2)
+                        {
+                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
 
-                    ClosingMethod();
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_NaverMap(locationArray);
 
-                    break;
+                            ClosingMethod();
+                        }
+
+                        break;
+
+                    // Google Map Module
+                    case "gm":
+                    case "gmap":
+                    case "map":
+                        if (command.Length >= 2)
+                        {
+                            string[] locationArray = new string[command.Length - 1]; // nm location1 location2 -> need (length - 1)
+                            Array.Copy(command, 1, locationArray, 0, locationArray.Length); // source array, source start index, target array, target start indext, count
+
+                            // Use Go Module
+                            Go go = new Go();
+                            go.Call_GoogleMap(locationArray);
+
+                            ClosingMethod();
+                        }
+
+                        break;
+                    // Calculator Module
+                    case "calc":
+                    case "calculator":
+                        if (command.Length >= 2)
+                        {
+                            // Combine seperated formula
+                            string formula = string.Empty;
+                            for (int i = 1; i < command.Length; i++)
+                            {
+                                formula += command[i];
+                            }
+
+                            Calculator clac = new Calculator();
+                            string result = clac.clac(formula);
+
+                            CalculatorWindow calcWindow = new CalculatorWindow(this);
+                            Load_SecondWindow(calcWindow);
+
+                            cur_SubWindow = calcWindow;
+
+                            Activate();
+
+                            calcWindow.Text_Formula.Text = formula;
+                            calcWindow.Text_Result.Text = result;
+                        }
+                        break;
+                    // Notepad Module
+                    case "notepad":
+                    case "note":
+
+                        NotepadWindow noteWindow = new NotepadWindow(this);
+                        Load_EdgeWindow(noteWindow);
+
+                        ClosingMethod();
+
+                        break;
+                }
             }
         }
 
