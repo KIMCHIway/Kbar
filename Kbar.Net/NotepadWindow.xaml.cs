@@ -46,11 +46,6 @@ namespace Kbar.Net
             }
         }
 
-        private void InputBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            mainWindow.isFocus = false;
-        }
-
         private void Button_Close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
